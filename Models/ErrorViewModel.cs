@@ -1,4 +1,4 @@
-﻿namespace MentalNote.Models;
+namespace MentalNote.Models;
 
 public class ErrorViewModel
 {
@@ -6,4 +6,3 @@ public class ErrorViewModel
 
     public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 }
-
