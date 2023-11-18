@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace MentalNote.Models;
-public class JournalEntryModel
+public class JournalEntry
 {
     [Key]
    public int JournalEntryID {get; set;}
