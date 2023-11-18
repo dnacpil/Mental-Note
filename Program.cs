@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MentalNote.Models;
 using MentalNote.Data;
+using Microsoft.AspNetCore.Identity;
+using MentalNote.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ var connectionString = builder.Configuration
     throw new InvalidOperationException("Connection string 'MentalNoteDBConnection' not found.");
 builder.Services.AddDbContext<MentalNoteDbContext>(options =>
     options.UseSqlite(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MentalNoteIdentityDbContext>();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
