@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalNote", "MentalNote.csproj", "{EF742E4F-5393-47F7-AAE8-F2A4F794E58D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentalNote", "MentalNote.csproj", "{54C818DD-DBAC-48F7-8024-C11278A060A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EF742E4F-5393-47F7-AAE8-F2A4F794E58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF742E4F-5393-47F7-AAE8-F2A4F794E58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF742E4F-5393-47F7-AAE8-F2A4F794E58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF742E4F-5393-47F7-AAE8-F2A4F794E58D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54C818DD-DBAC-48F7-8024-C11278A060A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54C818DD-DBAC-48F7-8024-C11278A060A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54C818DD-DBAC-48F7-8024-C11278A060A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54C818DD-DBAC-48F7-8024-C11278A060A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FE276FC3-CF33-4B9A-9D1C-E660C59EB7D0}
+		SolutionGuid = {1E023984-474B-4678-8F7D-C587A2E02921}
 	EndGlobalSection
 EndGlobal
