@@ -10,20 +10,20 @@ using MentalNote.Models;
 namespace MentalNote.Controllers;
 
     [Route("api/[controller]/[action]")]
-    public class JournalEntryController : Controller
+    public class NotesController : Controller
     {
         private readonly MentalNoteDbContext _db;
 
-        public JournalEntryController(MentalNoteDbContext context)
+        public NotesController(MentalNoteDbContext context)
         {
             _db = context;
         }
 
         // GET including sorting functionality
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrder)
+        public async Task<ActionResult<IEnumerable<Notes>>> Index(string? sortOrder)
         {
-            if (_db.JournalEntry == null)
+            if (_db.Notes == null)
             {
                 return NotFound();
             }
@@ -32,13 +32,13 @@ namespace MentalNote.Controllers;
             ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
             //ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
 
-            var entries = from e in _db.JournalEntry
-                          select e;
+            var note = from n in _db.Notes
+                          select n;
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    entries = entries.OrderByDescending(e => e.Title);
+                    note = note.OrderByDescending(e => e.Title);
                     break;
                 /* case "Category":
                     products = products.OrderBy(p => p.CatId);
@@ -53,19 +53,19 @@ namespace MentalNote.Controllers;
                     products = products.OrderByDescending(p => p.UnitPrice);
                     break; */
                 default:
-                    entries = entries.OrderBy(e => e.EntryDate);
+                    note = note.OrderBy(n => n.NoteDate);
                     break;
             }
 
-            return View(await entries.AsNoTracking().ToListAsync());
+            return View(await note.AsNoTracking().ToListAsync());
 
         }
 
-        // APIs to create, edit and delete journal entries
+        // APIs to create, edit and delete journal note
         [HttpGet]
         public IActionResult Create()
         {
-            var categories = _db.JournalEntry.Select(c => c.Tags).Distinct().ToList();
+            var categories = _db.Notes.Select(c => c.Title).Distinct().ToList();
             var selectListItems = categories.Select(category => new SelectListItem
             {
                 Text = category,
@@ -79,39 +79,39 @@ namespace MentalNote.Controllers;
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult<IEnumerable<JournalEntry>>> Create([Bind("JournalEntryID, EntryDate, Title, JournalContent, Tags, Owner, OwnerId")] JournalEntry entry)
+        public async Task<ActionResult<IEnumerable<Notes>>> Create([Bind("NoteID, NoteDate, Title, Note, Exercisesm, Owner, OwnerId")] Notes note)
         {
             if (ModelState.IsValid)
             {
-                _db.Add(entry);
+                _db.Add(note);
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(entry);
+            return View(note);
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<JournalEntry>>> Edit(int? id)
+        public async Task<ActionResult<IEnumerable<Notes>>> Edit(int? id)
         {
-            if (id == null || _db.JournalEntry == null)
+            if (id == null || _db.Notes == null)
             {
                 return NotFound();
             }
 
-            var entry = await _db.JournalEntry.FindAsync(id);
-            if (entry == null)
+            var note = await _db.Notes.FindAsync(id);
+            if (note == null)
             {
                 return NotFound();
             }
-            return View(entry);
+            return View(note);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> PostEdit(int id, [Bind("JournalEntryID, EntryDate, Title, JournalContent, Tags, Owner, OwnerId")] JournalEntry entry)
+        public async Task<IActionResult> PostEdit(int id, [Bind("NoteID, NoteDate, Title, Note, Exercisesm, Owner, OwnerId")] Notes note)
         {
-            if (id != entry.JournalEntryID)
+            if (id != note.NoteID)
             {
                 return NotFound();
             }
@@ -120,12 +120,12 @@ namespace MentalNote.Controllers;
             {
                 try
                 {
-                    _db.Update(entry);
+                    _db.Update(note);
                     await _db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EntryExists(entry.JournalEntryID))
+                    if (!NoteExists(note.NoteID))
                     {
                         return NotFound();
                     }
@@ -136,26 +136,26 @@ namespace MentalNote.Controllers;
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(entry);
+            return View(note);
         }
 
 
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _db.JournalEntry == null)
+            if (id == null || _db.Notes == null)
             {
                 return NotFound();
             }
 
-            var entry = await _db.JournalEntry
-                .FirstOrDefaultAsync(m => m.JournalEntryID == id);
-            if (entry == null)
+            var note = await _db.Notes
+                .FirstOrDefaultAsync(m => m.NoteID == id);
+            if (note == null)
             {
                 return NotFound();
             }
 
-            return View(entry);
+            return View(note);
         }
 
 
@@ -163,21 +163,21 @@ namespace MentalNote.Controllers;
         [ValidateAntiForgeryToken]
         public IActionResult PostDelete(int? id)
         {
-            var entry = _db.JournalEntry.Find(id);
+            var note = _db.Notes.Find(id);
 
-            if (entry == null)
+            if (note == null)
             {
                 return NotFound();
             }
-            _db.JournalEntry.Remove(entry);
+            _db.Notes.Remove(note);
             _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
 
-        private bool EntryExists(int id)
+        private bool NoteExists(int id)
         {
-            return (_db.JournalEntry?.Any(e => e.JournalEntryID == id)).GetValueOrDefault();
+            return (_db.Notes?.Any(e => e.NoteID == id)).GetValueOrDefault();
         }
 
 
