@@ -1,4 +1,4 @@
-@model JournalEntry;
+@model Notes;
 
 <form method="POST" id="createForm" asp-action="Create">
     <div class="border p-3">
@@ -9,12 +9,12 @@
 
         </div>
         <div class="form-floating py-2 col-12">
-            <textarea asp-for="JournalContent" class="form-control border-0 shadow"></textarea>
-            <label asp-for="JournalContent" class="ms-2">Journal Entry</label>
+            <textarea asp-for="Note" class="form-control border-0 shadow"></textarea>
+            <label asp-for="Note" class="ms-2">Note</label>
         </div>
         <div class="form-floating py-2 col-12">
-            <input asp-for="Tags" class="form-control border-0 shadow" />
-            <label asp-for="Tags" class="ms-2">Add tags</label>
+            <input asp-for="Exercises" class="form-control border-0 shadow" />
+            <label asp-for="Exercises" class="ms-2">Exercise</label>
         </div>
         <div class="row pt-2">
             <div class="col-6 col-md-3">

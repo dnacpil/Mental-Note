@@ -32,13 +32,13 @@ public class NotesController : Controller
         ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
         //ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
 
-        var note = from n in _db.Notes
-                   select n;
+        var item = from i in _db.Notes
+                   select i;
 
         switch (sortOrder)
         {
             case "name_desc":
-                note = note.OrderByDescending(e => e.Title);
+                item = item.OrderByDescending(e => e.Title);
                 break;
             /* case "Category":
                 products = products.OrderBy(p => p.CatId);
@@ -53,11 +53,11 @@ public class NotesController : Controller
                 products = products.OrderByDescending(p => p.UnitPrice);
                 break; */
             default:
-                note = note.OrderBy(n => n.NoteDate);
+                item = item.OrderBy(n => n.NoteDate);
                 break;
         }
 
-        return View(await note.AsNoTracking().ToListAsync());
+        return View(await item.AsNoTracking().ToListAsync());
 
     }
 
@@ -65,31 +65,23 @@ public class NotesController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var categories = _db.Notes.Select(c => c.Title).Distinct().ToList();
-        var selectListItems = categories.Select(category => new SelectListItem
-        {
-            Text = category,
-            Value = category
-        }).ToList();
-
-        ViewBag.Categories = selectListItems;
 
         return View();
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<ActionResult<IEnumerable<Notes>>> Create([Bind("NoteID, NoteDate, Title, Note, Exercisesm, Owner, OwnerId")] Notes note)
+    public async Task<ActionResult<IEnumerable<Notes>>> Create([Bind("NoteID, NoteDate, Title, Note, Exercisesm, Owner, OwnerId")] Notes item)
     {
         if (ModelState.IsValid)
         {
-            _db.Add(note);
+            _db.Add(item);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        return View(note);
+        return View(item);
     }
 
+    //GET & POST: Edit an item
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Notes>>> Edit(int? id)
     {
@@ -98,20 +90,20 @@ public class NotesController : Controller
             return NotFound();
         }
 
-        var note = await _db.Notes.FindAsync(id);
-        if (note == null)
+        var item = await _db.Notes.FindAsync(id);
+        if (item == null)
         {
             return NotFound();
         }
-        return View(note);
+        return View(item);
     }
 
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> PostEdit(int id, [Bind("NoteID, NoteDate, Title, Note, Exercisesm, Owner, OwnerId")] Notes note)
+    public async Task<IActionResult> PostEdit(int id, [Bind("NoteID, NoteDate, Title, Note, Exercisesm, Owner, OwnerId")] Notes item)
     {
-        if (id != note.NoteID)
+        if (id != item.NoteID)
         {
             return NotFound();
         }
@@ -120,12 +112,12 @@ public class NotesController : Controller
         {
             try
             {
-                _db.Update(note);
+                _db.Update(item);
                 await _db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!NoteExists(note.NoteID))
+                if (!NoteExists(item.NoteID))
                 {
                     return NotFound();
                 }
@@ -136,10 +128,10 @@ public class NotesController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        return View(note);
+        return View(item);
     }
 
-
+     //GET & POST: Delete items
     [HttpGet]
     public async Task<IActionResult> Delete(int? id)
     {
@@ -148,14 +140,14 @@ public class NotesController : Controller
             return NotFound();
         }
 
-        var note = await _db.Notes
+        var item = await _db.Notes
             .FirstOrDefaultAsync(m => m.NoteID == id);
-        if (note == null)
+        if (item == null)
         {
             return NotFound();
         }
 
-        return View(note);
+        return View(item);
     }
 
 
@@ -163,13 +155,13 @@ public class NotesController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult PostDelete(int? id)
     {
-        var note = _db.Notes.Find(id);
+        var item = _db.Notes.Find(id);
 
-        if (note == null)
+        if (item == null)
         {
             return NotFound();
         }
-        _db.Notes.Remove(note);
+        _db.Notes.Remove(item);
         _db.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
