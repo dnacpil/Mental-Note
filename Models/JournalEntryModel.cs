@@ -11,7 +11,7 @@ public class JournalEntry
    public string? Title {get; set;}
    public string? JournalContent {get; set;}
    public string? Tags {get; set;}
-   public required IdentityUser Owner { get; set; }
-   public required string OwnerId { get; set; }
+   public IdentityUser? Owner { get; set; }
+   public string? OwnerId { get; set; }
 
 }

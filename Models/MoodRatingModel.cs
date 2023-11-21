@@ -11,6 +11,6 @@ public class MoodRating
    public int? Rating {get; set;}
    public string? MoodNote {get; set;}
    public string? Weather {get; set;}
-   public required IdentityUser Owner { get; set; }
-   public required string OwnerId { get; set; }
+   public IdentityUser? Owner { get; set; }
+   public string? OwnerId { get; set; }
 }
