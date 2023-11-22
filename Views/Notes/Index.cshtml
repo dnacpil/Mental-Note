@@ -37,6 +37,16 @@
                             asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
                             model.Title) <i class="bi bi-arrow-down-square"></i></a>
                     </th>
+                    <th>
+                        <a asp-action="Index"
+                            asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
+                            model.Note) <i class="bi bi-arrow-down-square"></i></a>
+                    </th>
+                    <th>
+                        <a asp-action="Index"
+                            asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
+                            model.Exercises) <i class="bi bi-arrow-down-square"></i></a>
+                    </th>
                 </tr>
             </thead>
             <tbody>
