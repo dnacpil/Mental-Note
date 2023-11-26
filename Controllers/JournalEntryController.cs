@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-//using Microsoft.AspNetCore.Identity;
-//using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using MentalNote.Data;
 using MentalNote.Models;
-//using MentalNote.Areas.Identity.Pages;
 
 namespace MentalNote.Controllers;
 
