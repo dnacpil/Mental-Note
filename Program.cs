@@ -12,7 +12,7 @@ var connectionString = builder.Configuration
 builder.Services.AddDbContext<MentalNoteDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MentalNoteDbContext>();
-
+builder.Services.AddRazorPages();
 //builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
