@@ -27,7 +27,6 @@ public class JournalEntryController : Controller
 
         ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
         ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
-        //ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
 
         var entries = from e in _db.JournalEntry
                       select e;
@@ -37,18 +36,7 @@ public class JournalEntryController : Controller
             case "name_desc":
                 entries = entries.OrderByDescending(e => e.Title);
                 break;
-            /* case "Category":
-                products = products.OrderBy(p => p.CatId);
-                break;
-            case "category_desc":
-                products = products.OrderByDescending(p => p.CatId);
-                break;
-            case "Price":
-                products = products.OrderBy(p => p.CatId);
-                break;
-            case "price_desc":
-                products = products.OrderByDescending(p => p.UnitPrice);
-                break; */
+            
             default:
                 entries = entries.OrderBy(e => e.EntryDate);
                 break;

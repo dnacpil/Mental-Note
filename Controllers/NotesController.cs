@@ -1,11 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-//using Microsoft.AspNetCore.Identity;
-//using System.Diagnostics;
 using MentalNote.Data;
 using MentalNote.Models;
-//using MentalNote.Areas.Identity.Pages;
 
 namespace MentalNote.Controllers;
 
@@ -30,7 +27,6 @@ public class NotesController : Controller
 
         ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
         ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
-        //ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
 
         var item = from i in _db.Notes
                    select i;
@@ -40,18 +36,7 @@ public class NotesController : Controller
             case "name_desc":
                 item = item.OrderByDescending(e => e.Title);
                 break;
-            /* case "Category":
-                products = products.OrderBy(p => p.CatId);
-                break;
-            case "category_desc":
-                products = products.OrderByDescending(p => p.CatId);
-                break;
-            case "Price":
-                products = products.OrderBy(p => p.CatId);
-                break;
-            case "price_desc":
-                products = products.OrderByDescending(p => p.UnitPrice);
-                break; */
+           
             default:
                 item = item.OrderBy(n => n.NoteDate);
                 break;
