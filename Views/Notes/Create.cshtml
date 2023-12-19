@@ -1,22 +1,31 @@
 @model Notes;
 
-<form method="POST" id="createForm" asp-action="Create">
-    <div class="border p-3">
+<section id="">
+    <form method="POST" id="createForm" asp-action="Create">
         <div asp-validation-summary="All"></div>
-        <div class="form-floating py-2">
-            <input asp-for="Title" class="form-control border-0 shadow" />
-            <label asp-for="Title" class="ms-2">Title</label>
-
-        </div>
-        <div class="form-floating py-2 col-12">
-            <textarea asp-for="Note" class="form-control border-0 shadow"></textarea>
-            <label asp-for="Note" class="ms-2">Note</label>
-        </div>
-        <div class="form-floating py-2 col-12">
-            <input asp-for="Exercises" class="form-control border-0 shadow" />
-            <label asp-for="Exercises" class="ms-2">Exercise</label>
-        </div>
-        <div class="row pt-2">
+        <div class="container">
+            <div class="text-justify">
+                <h1>Notes</h1>
+            </div>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control" id="" />
+                </div>
+            </div>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="Note" class="form-label">Notes</label>
+                    <input asp-for="Note" class="form-control" id="" placeholder="" />
+                </div>
+            </div>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="Exercises" class="form-label">Exercise</label>
+                    <input asp-for="Exercises" class="form-control" id="" placeholder="" />
+                </div>
+            </div>
+            <div class="row pt-2">
             <div class="col-6 col-md-3">
                 <button type="submit" class="btn btn-primary form-control">Add</button>
             </div>
@@ -25,4 +34,6 @@
                     Back to homepage
                 </a>
             </div>
-</form>
+        </div>
+    </form>
+</section>

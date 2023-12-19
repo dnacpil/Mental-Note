@@ -5,7 +5,7 @@ using MentalNote.Models;
 using MentalNote.Data;
 
 namespace MentalNote.Controllers;
-[Authorize]
+//[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

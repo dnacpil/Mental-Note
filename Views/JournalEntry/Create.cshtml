@@ -1,22 +1,26 @@
 @model JournalEntry;
 
-<form method="POST" id="createForm" asp-action="Create">
-    <div class="border p-3">
+<section id="">
+    <form method="POST" id="createForm" asp-action="Create">
         <div asp-validation-summary="All"></div>
-        <div class="form-floating py-2">
-            <input asp-for="Title" class="form-control border-0 shadow" />
-            <label asp-for="Title" class="ms-2">Title</label>
+        <div class="container">
+            <div class="text-justify">
+                <h1>Journal Entry</h1>
+            </div>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
 
-        </div>
-        <div class="form-floating py-2 col-12">
-            <textarea asp-for="JournalContent" class="form-control border-0 shadow"></textarea>
-            <label asp-for="JournalContent" class="ms-2">Journal Entry</label>
-        </div>
-        <div class="form-floating py-2 col-12">
-            <input asp-for="Tags" class="form-control border-0 shadow" />
-            <label asp-for="Tags" class="ms-2">Add tags</label>
-        </div>
-        <div class="row pt-2">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control" id="" placeholder="Add a title" />
+                </div>
+            </div>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="JournalContent" class="form-label">Journal Entry</label>
+                    <input asp-for="JournalContent" class="form-control" id="" placeholder="Write about your thoughts, feelings, ideas..." style="min-height: 150px;"/>
+                </div>
+            </div>
+            <div class="row pt-2">
             <div class="col-6 col-md-3">
                 <button type="submit" class="btn btn-primary form-control">Add</button>
             </div>
@@ -25,4 +29,6 @@
                     Back to homepage
                 </a>
             </div>
-</form>
+        </div>
+    </form>
+</section>
