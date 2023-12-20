@@ -16,13 +16,13 @@
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
                     <label asp-for="Note" class="form-label">Notes</label>
-                    <input asp-for="Note" class="form-control" id="" placeholder="" />
+                    <input asp-for="Note" class="form-control" id="" placeholder="" style="min-height: 150px;"/>
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
                     <label asp-for="Exercises" class="form-label">Exercise</label>
-                    <input asp-for="Exercises" class="form-control" id="" placeholder="" />
+                    <input asp-for="Exercises" class="form-control" id="" placeholder="" style="min-height: 150px;"/>
                 </div>
             </div>
             <div class="row pt-2">
@@ -30,8 +30,8 @@
                 <button type="submit" class="btn btn-primary form-control">Add</button>
             </div>
             <div class="col-6 col-md-3">
-                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary border  form-control">
-                    Back to homepage
+                <a asp-controller="Notes" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                    Back to main
                 </a>
             </div>
         </div>
