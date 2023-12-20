@@ -20,7 +20,6 @@ namespace MentalNote.Data
        }
        public DbSet<JournalEntry> JournalEntry { get; set; } = null!;
        public DbSet<Notes> Notes { get; set; } = null!;
-
        public DbSet<MoodRating> MoodRating { get; set; } = null!;
       
    }
