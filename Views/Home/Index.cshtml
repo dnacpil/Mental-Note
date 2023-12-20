@@ -7,7 +7,7 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 
-<ejs-rating id="rating" allowReset=true enableAnimation=true enableSingleSelection=true value=4 precision=Full showTooltip=false emptyTemplate="#template"></ejs-rating>
+<ejs-rating id="rating" asp-controller="MoodRating" asp-action="SaveMoodRating" allowReset=true enableAnimation=true enableSingleSelection=true value=4 precision=Full showTooltip=false emptyTemplate="#template"></ejs-rating>
 
 <script id="template" type="text/x-jsrender">
     ${if(index==0)}
