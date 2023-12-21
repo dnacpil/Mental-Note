@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using MentalNote.Data;
 using MentalNote.Models;
 
@@ -16,38 +18,17 @@ public class MoodRatingController : Controller
         _db = context;
     }
 
-[HttpPost]
-    public IActionResult SaveMoodRating(int rating)
-    {
+/* [HttpPost]
+public IActionResult SubmitMood(MoodRating moodRating)
+{
+    moodRating.OwnerId = userManager.GetUserId(User);
 
-        string moodEmoji = GetMoodEmoji(rating);
+    moodRating.RatingDate = DateTime.Now;
 
-        MoodRating moodRating = new MoodRating
-        {
-            //RatingDate = DateTime.Now,
-            Rating = rating,
-            MoodNote = moodEmoji,
-        };
-        _db.MoodRating.Add(moodRating);
-        _db.SaveChanges();
+    dbContext.MoodRatings.Add(moodRating);
+    dbContext.SaveChanges();
 
-        return RedirectToAction(nameof(Index));
-    }
+    return RedirectToAction("Index");*/
 
-    private string GetMoodEmoji(int rating)
-    {
-        switch (rating)
-        {
-            case 0:
-                return "😡"; // Angry emoji
-            case 1:
-                return "😠"; // Disagree emoji
-            case 2:
-                return "😐"; // Neutral emoji
-            case 3:
-                return "😊"; // Agree emoji
-            default:
-                return "😃"; // Happy emoji
-        }
-    }
+
 }

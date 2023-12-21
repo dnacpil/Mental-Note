@@ -27,3 +27,21 @@
         filter: grayscale(1);
     }
 </style>
+
+@* @model JournalEntry;
+<form asp-action="SubmitMood" method="post">
+
+    <ejs-rating id="rating" allowReset="true" enableAnimation="true" enableSingleSelection="true" value="@Model.Rating" precision="Full" showTooltip="false" emptyTemplate="#template"></ejs-rating>
+
+    <script id="template" type="text/x-jsrender">
+        {{if index==0}}
+        <span class='angry emoji'>&#128545;</span>{{else index==1}}
+        <span class='disagree emoji'>&#128577;</span>{{else index==2}}
+        <span class='neutral emoji'>&#128528;</span>{{else index==3}}
+        <span class='agree emoji'>&#128578;</span>{{else}}
+        <span class='happy emoji'>&#128512;</span>
+        {{/if}}
+    </script>
+
+    <button type="submit" class="btn btn-primary">Submit Mood</button>
+</form> *@

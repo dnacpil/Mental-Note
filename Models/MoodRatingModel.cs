@@ -8,6 +8,7 @@ public class MoodRating
    public int MoodRatingID {get; set;}
    [DataType(DataType.Date)]
    public DateTime? RatingDate {get; set;}
+   // public string? SelectedEmoji { get; set; }
    public int? Rating {get; set;}
    public string? MoodNote {get; set;}
    public string? Weather {get; set;}
