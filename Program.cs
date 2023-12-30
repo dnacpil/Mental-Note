@@ -15,6 +15,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 //builder.Services.AddControllersWithViews();
 
+//Syncfusion license registration
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt8QHJqUU1hXk5Hd0BLVGpAblJ3T2ZQdVt5ZDU7a15RRnVeQF9kSH1Wf0ZkWXtZcw==;Mgo+DSMBPh8sVXJ3S0R+WFpFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF5iS3xUd0ZmUHxZcHJXTw==;Mgo+DSMBMAY9C3t2VlhiQlVPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSHxRcURgXHZdd3RSTmY=");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

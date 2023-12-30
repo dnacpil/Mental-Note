@@ -1,29 +1,45 @@
-﻿@model MoodRating
-@using Syncfusion.EJ2.Inputs
+﻿@using Microsoft.AspNetCore.Identity
+@* @using Syncfusion.EJ2.Inputs *@
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model MoodRating
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-</div>
 
-<ejs-rating id="rating" enableAnimation=true enableSingleSelection=true ejs-for="@Model.Rating" emptyTemplate="#template"></ejs-rating>
+<section id="landing-section">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-4">Hi @UserManager.GetUserName(User)</h1>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <h2>How are you feeling today?</h2>
+        <p>On a scale of 1 to 10, with 1 being not great and 10 being fantastic, rate your mood:</p>
 
-<script id="template" type="text/x-jsrender">
-    ${if(index==0)}
-    <span class='angry emoji'>&#128545;</span>${else if(index==1)}
-    <span class='disagree emoji'>&#128577;</span>${else if(index==2)}
-    <span class='neutral emoji'>&#128528;</span>${else if(index==3)}
-    <span class='agree emoji'>&#128578;</span>${else}
-    <span class='happy emoji'>&#128512;</span>
-    ${/if}
-</script>
+       @* Add emoji or slider rating here. But normal input for now...*@
 
-<style>
-    /* To change the color of an unselected rating item. */
-    .e-rating-item-container:not(.e-rating-selected) .emoji {
-        filter: grayscale(1);
-    }
-</style>`
+       <form method="POST" asp-action="Create">
+            <div class="col-lg-3">
+                <input asp-for="Rating" class="form-control" />
+            </div>
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Add</button>
+            </div>
+        </form>
+        <p>Select words that resonate with your current emotions</p>
+
+        @* Add selection tags here*@
+
+        <p>Your emotions are unique, just like you. Take a moment to reflect.</p>
+        <p>Feel the need to express more? Turn your emotions into words. Start journaling now and embrace the therapeutic power of self-reflection.</p>
+
+    </div>
+</section>
+

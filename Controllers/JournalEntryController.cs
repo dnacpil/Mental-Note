@@ -6,6 +6,7 @@ using MentalNote.Models;
 
 namespace MentalNote.Controllers;
 
+[Authorize]
 [Route("api/[controller]/[action]")]
 public class JournalEntryController : Controller
 {
@@ -36,7 +37,7 @@ public class JournalEntryController : Controller
             case "name_desc":
                 entries = entries.OrderByDescending(e => e.Title);
                 break;
-            
+
             default:
                 entries = entries.OrderBy(e => e.EntryDate);
                 break;
@@ -54,7 +55,7 @@ public class JournalEntryController : Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult<IEnumerable<JournalEntry>>> Create([Bind("JournalEntryID, EntryDate, Title, JournalContent, Tags, Owner, OwnerId")] JournalEntry entry)
+    public async Task<ActionResult<IEnumerable<JournalEntry>>> Create([Bind("JournalEntryID, EntryDate, Title, JournalContent, Owner, OwnerId")] JournalEntry entry)
     {
         if (ModelState.IsValid)
         {
@@ -86,7 +87,7 @@ public class JournalEntryController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> PostEdit(int id, [Bind("JournalEntryID, EntryDate, Title, JournalContent, Tags, Owner, OwnerId")] JournalEntry entry)
+    public async Task<IActionResult> PostEdit(int id, [Bind("JournalEntryID, EntryDate, Title, JournalContent, Owner, OwnerId")] JournalEntry entry)
     {
         if (id != entry.JournalEntryID)
         {
@@ -156,8 +157,31 @@ public class JournalEntryController : Controller
     {
         return (_db.JournalEntry?.Any(e => e.JournalEntryID == id)).GetValueOrDefault();
     }
-}
 
+
+    //To show the full content of journal entry, allowing the user to read them
+
+    [HttpGet]
+    [Route("api/JournalEntry/Content/{id}")]
+    public async Task<IActionResult> Content(int? id)
+    {
+
+        if (id == null || _db.JournalEntry == null)
+        {
+            return NotFound();
+        }
+
+        var notes = await _db.JournalEntry
+            .FirstOrDefaultAsync(m => m.JournalEntryID == id);
+        if (notes == null)
+        {
+            return NotFound();
+        }
+
+        return View(notes);
+
+    }
+}
 /*[HttpGet]
 [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
  public IActionResult Error()

@@ -1,0 +1,22 @@
+@model IEnumerable<Notes>
+    
+@{
+    ViewData["Title"] = "Notes";
+}
+
+<div>
+    @foreach (var obj in Model)
+        {
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>@obj.Title</h5>
+                            <p>@obj.NoteDate</p>
+                            <a class="btn btn-primary" asp-action="Content" asp-route-id="@obj.NoteID">Read</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+</div>

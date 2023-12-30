@@ -2,69 +2,87 @@
 @{
     ViewData["Title"] = "Notes";
 }
+<div>
+    <h2>Notes</h2>
+</div>
+<div class="col-sm-6 d-flex justify-content-end align-items-center">
+    <a asp-controller="Notes" asp-action="Create" class="btn btn-primary text-uppercase align-items-center">
+        <i class="bi bi-plus-circle me-2"></i>Create a new note
+    </a>
+</div>
 
-<div class="container mt-5">
-    <div class="table-wrapper">
-        <div class="table-title pb-4">
-            <div class="row mt-3 align-items-center">
-                <div class="col-sm-6">
-                    <h2>Note</h2>
-                </div>
-                <div class="col-sm-6 d-flex justify-content-end align-items-center">
-                    <a asp-controller="Notes" asp-action="Create"
-                        class="btn btn-primary text-uppercase align-items-center">
-                        <i class="bi bi-plus-circle me-2"></i>Create a new note
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <form asp-action="Index" method="get">
-            <div class="form-actions no-color">
-                <p>
-                    Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-                    <input type="submit" value="Search" class="btn btn-default" /> |
-                    <a asp-action="Index">Back to Full List</a>
-                </p>
-            </div>
-        </form>
-
-        <table class="table table-striped table-hover" aria-describedby="table">
-            <thead>
-                <tr>
-                    <th>
-                        <a asp-action="Index"
-                            asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
-                            model.Title) <i class="bi bi-arrow-down-square"></i></a>
-                    </th>
-                    <th>
-                        <a asp-action="Index"
-                            asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
-                            model.Note) <i class="bi bi-arrow-down-square"></i></a>
-                    </th>
-                    <th>
-                        <a asp-action="Index"
-                            asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
-                            model.Exercises) <i class="bi bi-arrow-down-square"></i></a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var obj in Model)
-                {
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="note-tab" data-bs-toggle="tab" data-bs-target="#note-tab-pane"
+                type="button" role="tab" aria-controls="note-tab-pane" aria-selected="true">Notes</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="exercises-tab" data-bs-toggle="tab" data-bs-target="#exercises-tab-pane"
+                type="button" role="tab" aria-controls="exercises-tab-pane" aria-selected="false">Exercises</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade" id="note-tab-pane" role="tabpanel" aria-labelledby="note-tab" tabindex="0">
+            <table class="table table-striped table-hover" aria-describedby="table">
+                <thead>
                     <tr>
-                        <td>@obj.Title</td>
-                        <td>@obj.Note</td>
-                        <td>@obj.Exercises</td>
 
-                        <td>
-                            <a class="edit" asp-action="Edit" asp-route-id="@obj.NoteID"><i class="bi bi-pen-fill"></i></a>
-                            <a class="delete" asp-action="Delete" asp-route-id="@obj.NoteID"><i
-                                    class="bi bi-trash3-fill"></i></a>
-                        </td>
+                        <th>
+                            Notes
+                        </th>
+                        <th>
+                            Date
+                        </th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+
+                            <td>@obj.Note</td>
+                            <td>@obj.NoteDate</td>
+                            <td>
+                                <a class="edit" asp-action="Edit" asp-route-id="@obj.NoteID"><i
+                                        class="bi bi-pen-fill"></i></a>
+                                <a class="delete" asp-action="Delete" asp-route-id="@obj.NoteID"><i
+                                        class="bi bi-trash3-fill"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="exercises-tab-pane" role="tabpanel" aria-labelledby="exercises-tab" tabindex="0">
+            <table class="table table-striped table-hover" aria-describedby="table">
+                <thead>
+                    <tr>
+
+                        <th>
+                            Exercises
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr>
+                            <td>@obj.Exercises</td>
+                            <td>@obj.NoteDate</td>
+                            <td>
+                                <a class="edit" asp-action="Edit" asp-route-id="@obj.NoteID"><i
+                                        class="bi bi-pen-fill"></i></a>
+                                <a class="delete" asp-action="Delete" asp-route-id="@obj.NoteID"><i
+                                        class="bi bi-trash3-fill"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

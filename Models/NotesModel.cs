@@ -7,7 +7,7 @@ public class Notes
    [Key]
    public int NoteID { get; set; }
    [DataType(DataType.Date)]
-   public DateTime? NoteDate { get; set; }
+   public DateTime? NoteDate { get; set; } = DateTime.Now;
    public string? Title { get; set; }
    public string? Note { get; set; }
    public string? Exercises { get; set; }

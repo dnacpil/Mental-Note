@@ -3,6 +3,7 @@ using System;
 using MentalNote.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalNote.Migrations
 {
     [DbContext(typeof(MentalNoteDbContext))]
-    partial class MentalNoteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231227194619_ChangesToMoodRatingAndJournalEntryModels")]
+    partial class ChangesToMoodRatingAndJournalEntryModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -48,9 +51,6 @@ namespace MentalNote.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Emoji")
                         .HasColumnType("TEXT");
 
@@ -60,8 +60,11 @@ namespace MentalNote.Migrations
                     b.Property<string>("OwnerId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Rating")
-                        .HasColumnType("INTEGER");
+                    b.Property<double?>("Rating")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime?>("RatingDate")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("MoodRatingID");
 

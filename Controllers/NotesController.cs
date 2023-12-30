@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MentalNote.Data;
 using MentalNote.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MentalNote.Controllers;
 
+[Authorize]
 [Route("api/[controller]/[action]")]
 public class NotesController : Controller
 {
@@ -16,7 +18,6 @@ public class NotesController : Controller
         _db = context;
     }
 
-    // GET including sorting functionality
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Notes>>> Index(string? sortOrder)
     {
@@ -36,7 +37,7 @@ public class NotesController : Controller
             case "name_desc":
                 item = item.OrderByDescending(e => e.Title);
                 break;
-           
+
             default:
                 item = item.OrderBy(n => n.NoteDate);
                 break;
@@ -66,7 +67,7 @@ public class NotesController : Controller
         return View(item);
     }
 
-    //GET & POST: Edit an item
+    //Edit an item
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Notes>>> Edit(int? id)
     {
@@ -116,7 +117,7 @@ public class NotesController : Controller
         return View(item);
     }
 
-     //GET & POST: Delete items
+    //Delete items
     [HttpGet]
     public async Task<IActionResult> Delete(int? id)
     {
@@ -157,7 +158,36 @@ public class NotesController : Controller
         return (_db.Notes?.Any(e => e.NoteID == id)).GetValueOrDefault();
     }
 
+    //To show the full content of the Notes and Exercises, allowing the user to read them
+    [HttpGet]
+    public IActionResult PatientView()
+    {
 
+        IEnumerable<Notes> objNoteList = _db.Notes.ToList();
+
+        return View(objNoteList);
+    }
+
+    [HttpGet]
+    [Route("api/Notes/Content/{id}")]
+    public async Task<IActionResult> Content(int? id)
+    {
+
+        if (id == null || _db.Notes == null)
+        {
+            return NotFound();
+        }
+
+        var notes = await _db.Notes
+            .FirstOrDefaultAsync(m => m.NoteID == id);
+        if (notes == null)
+        {
+            return NotFound();
+        }
+
+        return View(notes);
+    
+    }
     /*[HttpGet]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
      public IActionResult Error()
