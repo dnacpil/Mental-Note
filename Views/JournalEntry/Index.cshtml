@@ -24,16 +24,7 @@
                         <i class="bi bi-plus-circle me-2"></i> New Entry
                     </a>
                 </th>
-                @* <th>
-                <a asp-action="Index"
-                asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
-                model.Title) <i class="bi bi-arrow-down-square"></i></a>
-                </th>
-                <th>
-                <a asp-action="Index"
-                asp-route-sortOrder="@ViewData["DescriptionSortParm"]">@Html.DisplayNameFor(model =>
-                model.EntryDate) <i class="bi bi-arrow-down-square"></i></a>
-                </th> *@
+                
             </tr>
         <tbody class="table-group-divider">
             @foreach (var obj in Model)

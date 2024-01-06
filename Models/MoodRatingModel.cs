@@ -11,7 +11,6 @@ public class MoodRating
    public string? Emoji { get; set; }
    public int? Rating { get; set; }
    public string? MoodNote { get; set; }
-   //public string? Weather {get; set;}
    public IdentityUser? Owner { get; set; }
    public string? OwnerId { get; set; }
 }

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MentalNote.Data;
 using MentalNote.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace MentalNote.Controllers;
 
@@ -11,10 +11,12 @@ namespace MentalNote.Controllers;
 [Route("api/[controller]/[action]")]
 public class NotesController : Controller
 {
+    private readonly UserManager<IdentityUser> _userManager;
     private readonly MentalNoteDbContext _db;
 
-    public NotesController(MentalNoteDbContext context)
+    public NotesController(UserManager<IdentityUser> userManager, MentalNoteDbContext context)
     {
+        _userManager = userManager;
         _db = context;
     }
 
@@ -60,6 +62,11 @@ public class NotesController : Controller
     {
         if (ModelState.IsValid)
         {
+            IdentityUser currentUser = await _userManager.GetUserAsync(User);
+
+            item.Owner = currentUser;
+            item.OwnerId = currentUser.Id;
+            
             _db.Add(item);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

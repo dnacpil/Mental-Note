@@ -30,9 +30,14 @@ public class MoodRatingController : Controller
     {
         if (ModelState.IsValid)
         {
+            IdentityUser currentUser = await _userManager.GetUserAsync(User);
+
+            moodRating.Owner = currentUser;
+            moodRating.OwnerId = currentUser.Id;
+            
             _db.Add(moodRating);
             await _db.SaveChangesAsync();
-            RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));
 
         }
        return View(moodRating);
