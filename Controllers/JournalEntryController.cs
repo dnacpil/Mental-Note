@@ -22,33 +22,38 @@ public class JournalEntryController : Controller
 
     // GET: Index
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrder)
+public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrder)
+{
+    if (_db.JournalEntry == null)
     {
-
-        if (_db.JournalEntry == null)
-        {
-            return NotFound();
-        }
-
-        ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-        ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
-
-        var entries = from e in _db.JournalEntry
-                      select e;
-
-        switch (sortOrder)
-        {
-            case "name_desc":
-                entries = entries.OrderByDescending(e => e.Title);
-                break;
-
-            default:
-                entries = entries.OrderBy(e => e.EntryDate);
-                break;
-        }
-
-        return View(await entries.AsNoTracking().ToListAsync());
+        return NotFound();
     }
+
+    ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+    ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
+
+    // Get the currently signed-in user
+    IdentityUser currentUser = await _userManager.GetUserAsync(User);
+
+    // Filter entries based on the owner (current user)
+    var entries = from e in _db.JournalEntry
+                  where e.OwnerId == currentUser.Id
+                  select e;
+
+    switch (sortOrder)
+    {
+        case "name_desc":
+            entries = entries.OrderByDescending(e => e.Title);
+            break;
+
+        default:
+            entries = entries.OrderBy(e => e.EntryDate);
+            break;
+    }
+
+    return View(await entries.AsNoTracking().ToListAsync());
+}
+
 
     // APIs to create, edit and delete journal entries
     [HttpGet]

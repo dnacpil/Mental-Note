@@ -7,7 +7,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
    <li class="nav-item">
-       <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+       Hello @UserManager.GetUserName(User)
    </li>
    <li class="nav-item">
        <div class="dropdown dropstart">
@@ -16,7 +16,7 @@
          </a>
          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
            <li>
-               <a class="dropdown-item" asp-area="" asp-controller="User" asp-action="Edit">Account Settings</a>
+               <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account Settings</a>
            </li>
            <li class="dropdown-divider"></li>
            <li class="nav-item">

@@ -31,7 +31,10 @@ public class NotesController : Controller
         ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
         ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
 
-        var item = from i in _db.Notes
+        IdentityUser currentUser = await _userManager.GetUserAsync(User);
+
+
+        var item = from i in _db.Notes where i.OwnerId == currentUser.Id
                    select i;
 
         switch (sortOrder)

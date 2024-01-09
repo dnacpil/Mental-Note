@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using MentalNote.Areas.Identity.Data;
 
 namespace MentalNote.Areas.Identity.Pages.Account
 {
@@ -70,6 +71,10 @@ namespace MentalNote.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+            /* [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "User Type")]
+            public string UserType { get; set; } */
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -113,6 +118,8 @@ namespace MentalNote.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+
+                //user.UserType = Input.UserType;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

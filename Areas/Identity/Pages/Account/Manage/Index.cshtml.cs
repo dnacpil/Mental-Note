@@ -6,9 +6,11 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using MentalNote.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+
 
 namespace MentalNote.Areas.Identity.Pages.Account.Manage
 {
@@ -51,13 +53,19 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public class InputModel
         {
+            /* [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "User Type")]
+            public string UserType { get; set; } */
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
         }
 
         private async Task LoadAsync(IdentityUser user)
@@ -69,6 +77,7 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+                //UserType = user.UserType,
                 PhoneNumber = phoneNumber
             };
         }
@@ -109,6 +118,10 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+            /* if (Input.UserType != user.UserType)
+            {
+                user.UserType = Input.UserType;
+            } */
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";
