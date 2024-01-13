@@ -12,7 +12,7 @@
 </div>
 
 <div class="container">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="note-tab" data-bs-toggle="tab" data-bs-target="#note-tab-pane"
                 type="button" role="tab" aria-controls="note-tab-pane" aria-selected="true">Notes</button>
@@ -28,15 +28,15 @@
                 <thead>
                     <tr>
 
-                        <th>
+                        <th id="n-th">
                             Notes
                         </th>
-                        <th>
+                        <th id="n-th">
                             Date
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="n-tbody">
                     @foreach (var obj in Model)
                     {
                         <tr>
@@ -59,15 +59,15 @@
                 <thead>
                     <tr>
 
-                        <th>
+                        <th id="n-th">
                             Exercises
                         </th>
-                        <th>
+                        <th id="n-th">
                             Date
                         </th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="n-tbody">
                     @foreach (var obj in Model)
                     {
                         <tr>

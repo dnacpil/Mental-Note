@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using MentalNote.Data;
 using MentalNote.Models;
-
+using MentalNote.Services;
 
 namespace MentalNote.Controllers;
 
@@ -12,17 +12,26 @@ public class MoodRatingController : Controller
 {
     private readonly MentalNoteDbContext _db;
     private readonly UserManager<IdentityUser> _userManager;
+    private readonly ReminderService _reminderService;
 
-    public MoodRatingController(UserManager<IdentityUser> userManager, MentalNoteDbContext context)
+    public MoodRatingController(UserManager<IdentityUser> userManager, MentalNoteDbContext context, ReminderService reminderService)
     {
         _userManager = userManager;
         _db = context;
+        _reminderService = reminderService;
     }
     [HttpGet]
-    public IActionResult Index()
+    /* public IActionResult Index()
     {
 
         return View();
+    } */
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+
+        return RedirectToAction("Index", controllerName: "Home");
     }
 
     [HttpPost]
@@ -34,35 +43,21 @@ public class MoodRatingController : Controller
 
             moodRating.Owner = currentUser;
             moodRating.OwnerId = currentUser.Id;
-            
+
             _db.Add(moodRating);
             await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
 
+            _reminderService.CheckMoodAndSendReminder(currentUser.Id);
+
+            return RedirectToAction("Index", controllerName: "Home");
         }
-       return View(moodRating);
 
+        return View(moodRating);
     }
 
-    /* public async Task<IActionResult> SubmitMood(MoodRating moodRating)
+    /* public IActionResult RedirectToRemindersView()
     {
-        try
-        {
-            moodRating.OwnerId = _userManager.GetUserId(User);
-            moodRating.RatingDate = DateTime.Now;
-
-            _db.Add(moodRating);
-            await _db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-            
-        }
-        catch (Exception)
-        {
-            // Log the exception or handle it appropriately
-            return StatusCode(500, "Internal Server Error");
-        }
+        return View();
     } */
-
-
-
+    
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
 html {
   font-size: 14px;
 }
@@ -19,4 +21,64 @@ html {
 
 body {
   margin-bottom: 60px;
+  font-family: 'Lato', sans-serif;
+  background-image: linear-gradient(90deg, #A2A3E9, #F3F8F0) ;
+}
+
+h2{
+font-weight: 300;
+}
+/* Journal Entry Views */
+#je-th{
+  background-color: #D2E4C7; 
+  color: #ffffff;
+  font-weight: 300;
+  font-size: 20px;
+}
+#je-tbody{
+  background-color: #F6F6F6;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+#je-create-form{
+  background-image: linear-gradient(90deg, #92B079 0%, #F3F8F0 73.6083984375%);
+}
+#je-create-label{
+  font-weight: 100;
+  font-size: 16px;
+  color: #000000;
+}
+
+#je-create-input{
+font-weight: 300;
+font-size: 14px;
+}
+
+#je-create-btn{
+  background: #D2E4C7;
+  border: 1px solid #618741;
+  font-weight: 300;
+}
+
+/* Notes Views */
+#myTab{
+  background-color: #95B9FF;
+  font-weight: 300;
+  font-size: 20px;
+}
+#myTabContent{
+  background-color: #95B9FF;
+}
+#n-th{
+  background-color: #DCE8FF;
+  font-weight: 300;
+  font-size: 20px;
+  color: #000000;
+}
+#n-tbody{
+  background-color: #F6F6F6;
+  font-weight: 300;
+  font-size: 20px;
+  color: #000000;
 }

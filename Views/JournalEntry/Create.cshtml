@@ -1,31 +1,28 @@
 @model JournalEntry;
 
-<section id="">
-    <form method="POST" id="createForm" asp-action="Create">
+<section id="je-create-form">
+    <form method="POST" asp-action="Create">
         <div asp-validation-summary="All"></div>
-        <div class="container">
-            <div class="text-justify">
-                <h1>Journal Entry</h1>
-            </div>
+        
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
 
-                    <label asp-for="Title" class="form-label">Title</label>
-                    <input asp-for="Title" class="form-control" id="" placeholder="Add a title" />
+                    <label asp-for="Title" class="form-label" id="je-create-label">Title</label>
+                    <input asp-for="Title" class="form-control" id="je-create-input" placeholder="Add a title" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="JournalContent" class="form-label">Journal Entry</label>
-                    <input asp-for="JournalContent" class="form-control" id="" placeholder="Write about your thoughts, feelings, ideas..." style="min-height: 150px;"/>
+                    <label asp-for="JournalContent" class="form-label" id="je-create-label">Journal Entry</label>
+                    <input asp-for="JournalContent" class="form-control" id="je-create-input" placeholder="Write about your thoughts, feelings, ideas..." style="min-height: 150px;"/>
                 </div>
             </div>
             <div class="row pt-2">
             <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Add</button>
+                <button type="submit" class="btn form-control" id="je-create-btn">Add</button>
             </div>
             <div class="col-6 col-md-3">
-                <a asp-controller="JournalEntry" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                <a asp-controller="JournalEntry" asp-action="Index" class="btn form-control">
                     Back to main
                 </a>
             </div>
