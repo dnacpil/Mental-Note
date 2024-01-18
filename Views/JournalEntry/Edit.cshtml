@@ -1,8 +1,8 @@
 @model JournalEntry;
 
-<section id="">
-    <form method="POST" id="editForm" asp-action="PostEdit" asp-route-id="@Model.JournalEntryID>
-    <div class="container">
+<div class="container">
+    <form method="POST" id="editForm" asp-route-id="@Model.JournalEntryID" asp-action="PostEdit">
+    
         <input type="hidden" asp-for="JournalEntryID" />
         <div asp-validation-summary="All"></div>
         <div class="text-justify">
@@ -30,6 +30,5 @@
                 </a>
             </div>
         </div>
-    </div>
     </form>
-</section>
+</div>

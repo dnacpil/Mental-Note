@@ -8,6 +8,4 @@ public class MentalNoteUser : IdentityUser
     [PersonalData]
     public string? UserType { get; set; }
 
-    [PersonalData]
-    public DateTime DOB { get; set; }
 }

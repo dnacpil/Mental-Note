@@ -1,26 +1,27 @@
 @model JournalEntry
 
-<form method="POST" asp-action="PostDelete" asp-route-id="@Model.JournalEntryID>
-    <div class=" container">
-    <input type="hidden" asp-for="JournalEntryID" />
-    <div asp-validation-summary="All"></div>
-    <div class="text-justify">
-        <h1>Delete Entry</h1>
-    </div>
-    <div class="row justify-content-start my-3">
-        <div class="col-lg-12">
-            <label asp-for="Title" class="form-label">Title</label>
-            <input asp-for="Title" class="form-control" />
+<div class="container-fluid">
+    <form method="post" asp-route-id="@Model.JournalEntryID action="PostDelete"> 
+        <input type="hidden" asp-for="JournalEntryID"/>
+        <div asp-validation-summary="All"></div>
+        <div class="text-justify">
+            <h1>Delete Entry</h1>
         </div>
-    </div>
-    <div class="row pt-2">
-        <div class="col-6 col-md-3">
-            <button type="submit" class="btn btn-primary form-control">Delete</button>
+        <div class="row justify-content-start my-3">
+            <div class="col-lg-12">
+                <label asp-for="Title" class="form-label">Title</label>
+                <input asp-for="Title" class="form-control" />
+            </div>
         </div>
-        <div class="col-6 col-md-3">
-            <a asp-controller="JournalEntry" asp-action="Index" class="btn btn-outline-primary border  form-control">
-                Back to main
-            </a>
+        <div class="row pt-2">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Delete</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="JournalEntry" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                    Back to main
+                </a>
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>

@@ -24,17 +24,17 @@ namespace MentalNote.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
-        private readonly IUserEmailStore<IdentityUser> _emailStore;
+        private readonly SignInManager<MentalNoteUser> _signInManager;
+        private readonly UserManager<MentalNoteUser> _userManager;
+        private readonly IUserStore<MentalNoteUser> _userStore;
+        private readonly IUserEmailStore<MentalNoteUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            IUserStore<IdentityUser> userStore,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<MentalNoteUser> userManager,
+            IUserStore<MentalNoteUser> userStore,
+            SignInManager<MentalNoteUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -71,10 +71,10 @@ namespace MentalNote.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /* [Required]
+            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "User Type")]
-            public string UserType { get; set; } */
+            public string UserType { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -119,7 +119,7 @@ namespace MentalNote.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
-                //user.UserType = Input.UserType;
+                user.UserType = Input.UserType;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -161,27 +161,27 @@ namespace MentalNote.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private MentalNoteUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<MentalNoteUser>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(IdentityUser)}'. " +
-                    $"Ensure that '{nameof(IdentityUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(MentalNoteUser)}'. " +
+                    $"Ensure that '{nameof(MentalNoteUser)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        private IUserEmailStore<IdentityUser> GetEmailStore()
+        private IUserEmailStore<MentalNoteUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<IdentityUser>)_userStore;
+            return (IUserEmailStore<MentalNoteUser>)_userStore;
         }
     }
 }

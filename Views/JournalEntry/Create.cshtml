@@ -1,20 +1,19 @@
 @model JournalEntry;
-
-<section id="je-create-form">
-    <form method="POST" asp-action="Create">
+<div id="je-page">
+    <div class="px-2 py-2" id="je-create-form">
+        <form method="POST" asp-action="Create">
         <div asp-validation-summary="All"></div>
         
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-
-                    <label asp-for="Title" class="form-label" id="je-create-label">Title</label>
-                    <input asp-for="Title" class="form-control" id="je-create-input" placeholder="Add a title" />
+                    <label asp-for="Title" class="form-label py-1" id="create-label">Title</label>
+                    <input asp-for="Title" class="form-control py-1" id="create-input" placeholder="Add a title" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="JournalContent" class="form-label" id="je-create-label">Journal Entry</label>
-                    <input asp-for="JournalContent" class="form-control" id="je-create-input" placeholder="Write about your thoughts, feelings, ideas..." style="min-height: 150px;"/>
+                    <label asp-for="JournalContent" class="form-label py-1" id="create-label">Journal Entry</label>
+                    <input asp-for="JournalContent" class="form-control py-1" id="create-input" placeholder="Write about your thoughts, feelings, ideas..." style="min-height: 150px;"/>
                 </div>
             </div>
             <div class="row pt-2">
@@ -28,4 +27,5 @@
             </div>
         </div>
     </form>
-</section>
+    </div>
+</div>

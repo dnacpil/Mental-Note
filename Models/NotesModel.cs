@@ -7,6 +7,7 @@ public class Notes
    [Key]
    public int NoteID { get; set; }
    [DataType(DataType.Date)]
+   //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
    public DateTime? NoteDate { get; set; } = DateTime.Now;
    public string? Title { get; set; }
    public string? Note { get; set; }

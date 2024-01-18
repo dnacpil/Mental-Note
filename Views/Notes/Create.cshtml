@@ -1,39 +1,38 @@
 @model Notes;
-
-<section id="">
-    <form method="POST" id="createForm" asp-action="Create">
-        <div asp-validation-summary="All"></div>
-        <div class="container">
+<div id="notes-page">
+    <div class="px-2 py-2" id="n-create-form">
+        <form method="POST" asp-action="Create">
+            <div asp-validation-summary="All"></div>
             <div class="text-justify">
                 <h1>Notes</h1>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Title" class="form-label">Title</label>
-                    <input asp-for="Title" class="form-control" id="" />
+                    <label asp-for="Title" class="form-label py-1" id="create-label">Title</label>
+                    <input asp-for="Title" class="form-control py-1" id="create-input" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Note" class="form-label">Notes</label>
-                    <input asp-for="Note" class="form-control" id="" placeholder="" style="min-height: 150px;"/>
+                    <label asp-for="Note" class="form-label py-1" id="create-label">Notes</label>
+                    <input asp-for="Note" class="form-control py-1" id="create-input" placeholder="" style="min-height: 150px;" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Exercises" class="form-label">Exercise</label>
-                    <input asp-for="Exercises" class="form-control" id="" placeholder="" style="min-height: 150px;"/>
+                    <label asp-for="Exercises" class="form-label py-1" id="create-label">Exercise</label>
+                    <input asp-for="Exercises" class="form-control py-1" id="create-input" placeholder="" style="min-height: 150px;" />
                 </div>
             </div>
             <div class="row pt-2">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Add</button>
-            </div>
-            <div class="col-6 col-md-3">
-                <a asp-controller="Notes" asp-action="Index" class="btn btn-outline-primary border  form-control">
-                    Back to main
-                </a>
-            </div>
-        </div>
-    </form>
-</section>
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Add</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Notes" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                        Back to main
+                    </a>
+                </div>
+        </form>
+    </div>
+</div>

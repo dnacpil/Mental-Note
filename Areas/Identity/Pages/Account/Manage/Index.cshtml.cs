@@ -16,12 +16,12 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<MentalNoteUser> _userManager;
+        private readonly SignInManager<MentalNoteUser> _signInManager;
 
         public IndexModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<MentalNoteUser> userManager,
+            SignInManager<MentalNoteUser> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -53,10 +53,10 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public class InputModel
         {
-            /* [Required]
+            [Required]
             [DataType(DataType.Text)]
             [Display(Name = "User Type")]
-            public string UserType { get; set; } */
+            public string UserType { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -68,7 +68,7 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
 
         }
 
-        private async Task LoadAsync(IdentityUser user)
+        private async Task LoadAsync(MentalNoteUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
@@ -77,7 +77,7 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                //UserType = user.UserType,
+                UserType = user.UserType,
                 PhoneNumber = phoneNumber
             };
         }
@@ -118,10 +118,10 @@ namespace MentalNote.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
-            /* if (Input.UserType != user.UserType)
+            if (Input.UserType != user.UserType)
             {
                 user.UserType = Input.UserType;
-            } */
+            }
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

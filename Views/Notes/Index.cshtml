@@ -2,87 +2,88 @@
 @{
     ViewData["Title"] = "Notes";
 }
-<div>
-    <h2>Notes</h2>
-</div>
-<div class="col-sm-6 d-flex justify-content-end align-items-center">
-    <a asp-controller="Notes" asp-action="Create" class="btn btn-primary text-uppercase align-items-center">
-        <i class="bi bi-plus-circle me-2"></i>Create a new note
-    </a>
-</div>
+<div id="notes-page">
+    <div class="my-1 mx-1">
+        <h2>Notes</h2>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-end align-items-center">
+        <a asp-controller="Notes" asp-action="Create" class="btn btn-primary text-uppercase align-items-center">
+            <i class="bi bi-plus-circle me-2"></i>Create a new note
+        </a>
+    </div>
 
-<div class="container">
-    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="note-tab" data-bs-toggle="tab" data-bs-target="#note-tab-pane"
-                type="button" role="tab" aria-controls="note-tab-pane" aria-selected="true">Notes</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="exercises-tab" data-bs-toggle="tab" data-bs-target="#exercises-tab-pane"
-                type="button" role="tab" aria-controls="exercises-tab-pane" aria-selected="false">Exercises</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade" id="note-tab-pane" role="tabpanel" aria-labelledby="note-tab" tabindex="0">
-            <table class="table table-striped table-hover" aria-describedby="table">
-                <thead>
-                    <tr>
-
-                        <th id="n-th">
-                            Notes
-                        </th>
-                        <th id="n-th">
-                            Date
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="n-tbody">
-                    @foreach (var obj in Model)
-                    {
+    <div class="container-fluid">
+        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="note-tab" data-bs-toggle="tab" data-bs-target="#note-tab-pane"
+                    type="button" role="tab" aria-controls="note-tab-pane" aria-selected="true">Notes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="exercises-tab" data-bs-toggle="tab" data-bs-target="#exercises-tab-pane"
+                    type="button" role="tab" aria-controls="exercises-tab-pane" aria-selected="false">Exercises</button>
+            </li>
+        </ul>
+            <div class="tab-pane fade" id="note-tab-pane" role="tabpanel" aria-labelledby="note-tab" tabindex="0">
+                <table class="table table-striped table-hover" aria-describedby="table">
+                    <thead>
                         <tr>
 
-                            <td>@obj.Note</td>
-                            <td>@obj.NoteDate</td>
-                            <td>
-                                <a class="edit" asp-action="Edit" asp-route-id="@obj.NoteID"><i
-                                        class="bi bi-pen-fill"></i></a>
-                                <a class="delete" asp-action="Delete" asp-route-id="@obj.NoteID"><i
-                                        class="bi bi-trash3-fill"></i></a>
-                            </td>
+                            <th id="n-th">
+                                Notes
+                            </th>
+                            <th id="n-th">
+                                Date
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-pane fade" id="exercises-tab-pane" role="tabpanel" aria-labelledby="exercises-tab" tabindex="0">
-            <table class="table table-striped table-hover" aria-describedby="table">
-                <thead>
-                    <tr>
+                    </thead>
+                    <tbody id="n-tbody">
+                        @foreach (var obj in Model)
+                        {
+                            <tr>
 
-                        <th id="n-th">
-                            Exercises
-                        </th>
-                        <th id="n-th">
-                            Date
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="n-tbody">
-                    @foreach (var obj in Model)
-                    {
+                                <td>@obj.Note</td>
+                                <td>@obj.NoteDate</td>
+                                <td>
+                                    <a class="edit" asp-action="Edit" asp-route-id="@obj.NoteID"><i
+                                            class="bi bi-pen-fill"></i></a>
+                                    <a class="delete" asp-action="Delete" asp-route-id="@obj.NoteID"><i
+                                            class="bi bi-trash3-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="exercises-tab-pane" role="tabpanel" aria-labelledby="exercises-tab"
+                tabindex="0">
+                <table class="table table-striped table-hover" aria-describedby="table">
+                    <thead>
                         <tr>
-                            <td>@obj.Exercises</td>
-                            <td>@obj.NoteDate</td>
-                            <td>
-                                <a class="edit" asp-action="Edit" asp-route-id="@obj.NoteID"><i
-                                        class="bi bi-pen-fill"></i></a>
-                                <a class="delete" asp-action="Delete" asp-route-id="@obj.NoteID"><i
-                                        class="bi bi-trash3-fill"></i></a>
-                            </td>
+                            <th id="n-th">
+                                Exercises
+                            </th>
+                            <th id="n-th">
+                                Date
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="n-tbody">
+                        @foreach (var obj in Model)
+                        {
+                            <tr>
+                                <td>@obj.Exercises</td>
+                                <td>@obj.NoteDate</td>
+                                <td>
+                                    <a class="edit" asp-action="Edit" asp-route-id="@obj.NoteID"><i
+                                            class="bi bi-pen-fill"></i></a>
+                                    <a class="delete" asp-action="Delete" asp-route-id="@obj.NoteID"><i
+                                            class="bi bi-trash3-fill"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+</div>Ï
