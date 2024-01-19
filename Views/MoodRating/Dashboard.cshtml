@@ -1,0 +1,14 @@
+<div id="mood-page">
+    <div class="row">\
+        <div class="col">
+            <ejs-chart id="container" title="Dashboard" width="70%">
+                <e-chart-primaryxaxis valueType="Category">
+                </e-chart-primaryxaxis>
+                <e-series-collection>
+                    <e-series dataSource="ViewBag.dataSource" xName="x" yName="y"
+                        type="@Syncfusion.EJ2.Charts.ChartSeriesType.Spline"></e-series>
+                </e-series-collection>
+            </ejs-chart>
+        </div>
+    </div>
+</div>

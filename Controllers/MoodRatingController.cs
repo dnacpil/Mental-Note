@@ -59,5 +59,19 @@ public class MoodRatingController : Controller
     {
         return View();
     } */
-    
+    public IActionResult GetMoodData(string userId)
+    {
+        var moodData = _db.MoodRating
+            .Where(m => m.OwnerId == userId)
+            .OrderBy(m => m.Date)
+            .Select(m => new { m.Date, m.Rating })
+            .ToList();
+
+        // Format data for Syncfusion Spline chart
+        var splineChartData = moodData.Select(m => new { x = m.Date, y = m.Rating }).ToList();
+        
+        ViewBag.SplineChartData = splineChartData;
+
+        return View();
+    }
 }
