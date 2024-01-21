@@ -1,34 +1,37 @@
 @model JournalEntry;
-
-<div class="container">
-    <form method="POST" id="editForm" asp-route-id="@Model.JournalEntryID" asp-action="PostEdit">
-    
-        <input type="hidden" asp-for="JournalEntryID" />
-        <div asp-validation-summary="All"></div>
-        <div class="text-justify">
-            <h1>Edit Journal Entry</h1>
+<div id="je-page">
+    <div class="container-fluid">
+        <div class="text-justify m-1 p-2">
+            <h2>Edit Journal Entry</h1>
         </div>
-        <div class="row justify-content-start my-3">
-            <div class="col-lg-6">
-                <label asp-for="Title" class="form-label">Title</label>
-                <input asp-for="Title" class="form-control" id="" placeholder="Edit title" />
+        <form method="POST" id="editForm" asp-route-id="@Model.JournalEntryID" asp-action="PostEdit">
+            <input type="hidden" asp-for="JournalEntryID" />
+            <div asp-validation-summary="All"></div>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="Title" class="form-label" id="je-label">Title</label>
+                    <input asp-for="Title" class="form-control" id="je-input" placeholder="Edit title"
+                        style="min-height: 50px;" />
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-start my-3">
-            <div class="col-lg-6">
-                <label asp-for="JournalContent" class="form-label">Journal Entry</label>
-                <input asp-for="JournalContent" class="form-control" placeholder="Edit content" style="min-height: 150px;" />
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="JournalContent" class="form-label" id="je-label">Journal Entry</label>
+                    <input asp-for="JournalContent" class="form-control" id="je-input" placeholder="Edit content"
+                        style="min-height: 200px;" />
+                </div>
             </div>
-        </div>
-        <div class="row pt-2">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Update</button>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="JournalEntry" asp-action="Index"
+                        class="btn btn-outline-primary border  form-control">
+                        Back to main
+                    </a>
+                </div>
             </div>
-            <div class="col-6 col-md-3">
-                <a asp-controller="JournalEntry" asp-action="Index" class="btn btn-outline-primary border  form-control">
-                    Back to main
-                </a>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

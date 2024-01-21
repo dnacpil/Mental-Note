@@ -1,26 +1,28 @@
 @model Notes
-<div class="container-fluid">
-<form method="POST" asp-route-id="@Model.NoteID asp-action="PostDelete">
-    <input type=" hidden" asp-for="NoteID" />
-<div asp-validation-summary="All"></div>
-<div class="text-justify">
-    <h1>Delete Note</h1>
-</div>
-<div class="row justify-content-start my-3">
-    <div class="col-lg-12">
-        <label asp-for="Title" class="form-label">Title</label>
-        <input asp-for="Title" class="form-control" />
+<div id="notes-page">
+    <div class="container-fluid">
+        <form method="POST" asp-route-id="@Model.NoteID asp-action=" PostDelete">
+            <input type=" hidden" asp-for="NoteID" />
+            <div asp-validation-summary="All"></div>
+            <div class="text-justify">
+                <h1>Delete Note</h1>
+            </div>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-12">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Delete</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="Notes" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                        Back to main
+                    </a>
+                </div>
+            </div>
+        </form>
     </div>
-</div>
-<div class="row pt-2">
-    <div class="col-6 col-md-3">
-        <button type="submit" class="btn btn-primary form-control">Delete</button>
-    </div>
-    <div class="col-6 col-md-3">
-        <a asp-controller="Notes" asp-action="Index" class="btn btn-outline-primary border  form-control">
-            Back to main
-        </a>
-    </div>
-</div>
-</form>
 </div>

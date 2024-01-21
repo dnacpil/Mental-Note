@@ -8,56 +8,17 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<button type="button" class="btn btn-primary d-none" id="showToastBtn">
-  Show Toast
-</button>
-
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
-  <div class="toast-header">
-    <strong class="mr-auto">Reminder</strong>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body">
-    
-  </div>
-</div>
-
-
 <section id="landing-section">
     <div class="container">
-        <div class="text-center">
-            <h1 class="display-4">Hi @UserManager.GetUserName(User)</h1>
-        </div>
+        <h1 class="display-4">Hi @UserManager.GetUserName(User)</h1>
     </div>
 </section>
 <section>
     <div class="container">
         <h2>How are you feeling today?</h2>
-        <p>On a scale of 1 to 10, with 1 being not great and 10 being fantastic, rate your mood:</p>
-
-       @* Add emoji or slider rating here. But normal input for now...*@
-
-       
-        <p>Select words that resonate with your current emotions</p>
-
-        @* Add selection tags here*@
-
-        <p>Your emotions are unique, just like you. Take a moment to reflect.</p>
-        <p>Feel the need to express more? Turn your emotions into words. Start journaling now and embrace the therapeutic power of self-reflection.</p>
-
+        <a asp-controller="MoodRating" asp-action="Index">
+            Let's check in with ourselves
+            <i class="bi bi-chevron-double-right"></i>
+        </a>
     </div>
 </section>
-
-<script>
-
-  $(document).ready(function () {
-    var reminderMessage = '@MentalNote.Services.ReminderService.ReminderMessage'; // Need to put actual condition check here
-    if (reminderMessage) {
-      $('.toast-body').text(reminderMessage);
-      $('.toast').toast('show');
-    }
-  });
-</script>

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MentalNote.Data;
 using Microsoft.AspNetCore.Identity;
+using MentalNote.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ var connectionString = builder.Configuration
 builder.Services.AddDbContext<MentalNoteDbContext>(options =>
     options.UseSqlite(connectionString));
     builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MentalNoteDbContext>();
+
+//builder.Services.AddScoped<ReminderService>();
 
 builder.Services.AddRazorPages();
 

@@ -1,15 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
 
-html{
+html, body{
   height: 100%;
 }
-body {
-  min-height: 100%;
-  width: 100%;
-  margin-bottom: 60px;
-  font-family: 'Lato', sans-serif;
-}
-
 .container-fluid{
   margin: 0;
   padding: 0;
@@ -17,24 +10,52 @@ body {
 /*   background-image: linear-gradient(90deg, #A2A3E9, #F3F8F0) ;
  */}
 
+main {
+  min-height: 100%;
+  width: 100%;
+  padding-bottom: 60px;
+  font-family: 'Lato', sans-serif;
+}
+
 h2{
   font-weight: 300;
   }
-
+  a:link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:active {
+    text-decoration: none;
+    color: inherit;
+  }
 /* Journal Entry Views */
 #je-page{
-  height: fit-content;
+  height: 100vh;
   padding: 1%;
   background-image: linear-gradient(90deg, #92B079 0%, #F3F8F0 73.6083984375%);
 }
 #je-th{
-  background-color: #D2E4C7; 
+  /* background-color: #D2E4C7;  */
+  background-color: #92B079;
   color: #ffffff;
+  text-align: center;
   font-weight: 300;
   font-size: 20px;
 }
 #je-tbody{
   background-color: #F6F6F6;
+  text-align: center;
   font-weight: 300;
   font-size: 20px;
 }
@@ -42,15 +63,15 @@ h2{
 #je-create-form{
   background-image: linear-gradient(90deg, #92B079 0%, #F3F8F0 73.6083984375%);
 }
-#create-label{
+#je-label{
   font-weight: 100;
-  font-size: 16px;
+  font-size: 20px;
   color: #000000;
 }
 
-#create-input{
+#je-input{
 font-weight: 300;
-font-size: 14px;
+font-size: 18px;
 }
 
 #je-create-btn{
@@ -61,9 +82,8 @@ font-size: 14px;
 
 /* Notes Views */
 #notes-page{
-  height: fit-content;
   padding: 1%;
-  background-color: #95B9FF;
+  background-image: linear-gradient(90deg, #95B9FF 0%, #F3F8F0 100%);
 }
 #myTab{
   background-color: #95B9FF;
@@ -86,7 +106,7 @@ font-size: 14px;
   color: #000000;
 }
 footer{
-  margin-bottom: -60px;
+  margin-top: -60px;
 }
 @media (min-width: 768px) {
   html {
