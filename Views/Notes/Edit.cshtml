@@ -1,41 +1,43 @@
 @model Notes;
-<section id="">
-    <form method="POST" id="editForm" asp-action="PostEdit" asp-route-id="@Model.NoteID>
-    <div class="container">
-        <input type="hidden" asp-for="NoteID" />
-        <div asp-validation-summary="All"></div>
-        <div class="text-justify">
-            <h1>Edit Notes</h1>
-        </div>
-        <div class="row justify-content-start my-3">
-            <div class="col-lg-6">
-                <label asp-for="Title" class="form-label">Title</label>
-                <input asp-for="Title" class="form-control" id="" placeholder="Edit title" />
+<div id="notes-page p-2">
+    <div id="n-ced-views">
+        <form method="POST" asp-route-id="@Model.NoteID asp-action=" PostEdit" id="">
+            <input type="hidden" asp-for="NoteID" />
+            <div asp-validation-summary="All"></div>
+            <div class="text-justify">
+                <h1>Edit Notes</h1>
             </div>
-        </div>
-        <div class="row justify-content-start my-3">
-            <div class="col-lg-6">
-                <label asp-for="Note" class="form-label">Notes</label>
-                <input asp-for="Note" class="form-control" placeholder="Edit content" style="min-height: 150px;" />
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control" id="" placeholder="Edit title" />
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-start my-3">
-            <div class="col-lg-6">
-                <label asp-for="Exercises" class="form-label">Edit Exercises</label>
-                 <input asp-for="Exercises" class="form-control" placeholder="Edit exercises" style="min-height: 150px;" />
-            
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="Note" class="form-label">Notes</label>
+                    <input asp-for="Note" class="form-control" placeholder="Edit content" style="min-height: 150px;" />
+                </div>
             </div>
-        </div>
-        <div class="row pt-2">
-            <div class="col-6 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Update</button>
+            <div class="row justify-content-start my-3">
+                <div class="col-lg-6">
+                    <label asp-for="Exercises" class="form-label">Edit Exercises</label>
+                    <input asp-for="Exercises" class="form-control" placeholder="Edit exercises"
+                        style="min-height: 150px;" />
+
+                </div>
             </div>
-            <div class="col-6 col-md-3">
-                <a asp-controller="JournalEntry" asp-action="Index" class="btn btn-outline-primary border  form-control">
-                    Back to main
-                </a>
+            <div class="row pt-2">
+                <div class="col-6 col-md-3">
+                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a asp-controller="JournalEntry" asp-action="Index"
+                        class="btn btn-outline-primary border  form-control">
+                        Back to main
+                    </a>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
-    </form>
-</section>
+</div>
