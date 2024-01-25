@@ -34,7 +34,8 @@ public class NotesController : Controller
         IdentityUser currentUser = await _userManager.GetUserAsync(User);
 
 
-        var item = from i in _db.Notes where i.OwnerId == currentUser.Id
+        var item = from i in _db.Notes
+                   where i.OwnerId == currentUser.Id
                    select i;
 
         switch (sortOrder)
@@ -69,7 +70,7 @@ public class NotesController : Controller
 
             item.Owner = currentUser;
             item.OwnerId = currentUser.Id;
-            
+
             _db.Add(item);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -108,6 +109,10 @@ public class NotesController : Controller
         {
             try
             {
+                IdentityUser currentUser = await _userManager.GetUserAsync(User);
+
+                item.Owner = currentUser;
+                item.OwnerId = currentUser.Id;
                 _db.Update(item);
                 await _db.SaveChangesAsync();
             }
@@ -196,7 +201,7 @@ public class NotesController : Controller
         }
 
         return View(notes);
-    
+
     }
     /*[HttpGet]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

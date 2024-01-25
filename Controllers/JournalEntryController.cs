@@ -22,37 +22,37 @@ public class JournalEntryController : Controller
 
     // GET: Index
     [HttpGet]
-public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrder)
-{
-    if (_db.JournalEntry == null)
+    public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrder)
     {
-        return NotFound();
+        if (_db.JournalEntry == null)
+        {
+            return NotFound();
+        }
+
+        ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
+
+        // Get the currently signed-in user
+        IdentityUser currentUser = await _userManager.GetUserAsync(User);
+
+        // Filter entries based on the owner (current user)
+        var entries = from e in _db.JournalEntry
+                      where e.OwnerId == currentUser.Id
+                      select e;
+
+        switch (sortOrder)
+        {
+            case "name_desc":
+                entries = entries.OrderByDescending(e => e.Title);
+                break;
+
+            default:
+                entries = entries.OrderBy(e => e.EntryDate);
+                break;
+        }
+
+        return View(await entries.AsNoTracking().ToListAsync());
     }
-
-    ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-    ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
-
-    // Get the currently signed-in user
-    IdentityUser currentUser = await _userManager.GetUserAsync(User);
-
-    // Filter entries based on the owner (current user)
-    var entries = from e in _db.JournalEntry
-                  where e.OwnerId == currentUser.Id
-                  select e;
-
-    switch (sortOrder)
-    {
-        case "name_desc":
-            entries = entries.OrderByDescending(e => e.Title);
-            break;
-
-        default:
-            entries = entries.OrderBy(e => e.EntryDate);
-            break;
-    }
-
-    return View(await entries.AsNoTracking().ToListAsync());
-}
 
 
     // APIs to create, edit and delete journal entries
@@ -72,7 +72,7 @@ public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrd
 
             entry.Owner = currentUser;
             entry.OwnerId = currentUser.Id;
-            
+
             _db.Add(entry);
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -112,6 +112,11 @@ public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrd
         {
             try
             {
+                IdentityUser currentUser = await _userManager.GetUserAsync(User);
+
+                entry.Owner = currentUser;
+                entry.OwnerId = currentUser.Id;
+                
                 _db.Update(entry);
                 await _db.SaveChangesAsync();
             }
