@@ -10,6 +10,7 @@ public class Notes
    //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
    public DateTime? NoteDate { get; set; } = DateTime.Now;
    public string? Title { get; set; }
+   [Required]
    public string? Note { get; set; }
    public string? Exercises { get; set; }
    public IdentityUser? Owner { get; set; }

@@ -9,6 +9,7 @@ public class MoodRating
    [DataType(DataType.Date)]
    public DateTime? Date { get; set; } = DateTime.Now;
    //public string? Emoji { get; set; }
+   [Required]
    public int? Rating { get; set; }
    public string? MoodNote { get; set; }
    public IdentityUser? Owner { get; set; }

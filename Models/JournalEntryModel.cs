@@ -9,6 +9,7 @@ public class JournalEntry
     [DataType(DataType.Date)]
     public DateTime? EntryDate { get; set; } = DateTime.Now;
     public string? Title { get; set; }
+    [Required]
     public string? JournalContent { get; set; }
     public IdentityUser? Owner { get; set; }
     public string? OwnerId { get; set; }
