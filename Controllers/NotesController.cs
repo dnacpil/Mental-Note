@@ -73,6 +73,7 @@ public class NotesController : Controller
 
             _db.Add(item);
             await _db.SaveChangesAsync();
+            TempData["success"] = "Saved";
             return RedirectToAction(nameof(Index));
         }
         return View(item);
@@ -115,6 +116,7 @@ public class NotesController : Controller
                 item.OwnerId = currentUser.Id;
                 _db.Update(item);
                 await _db.SaveChangesAsync();
+                TempData["success"] = "Saved";
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -164,6 +166,7 @@ public class NotesController : Controller
         }
         _db.Notes.Remove(item);
         _db.SaveChangesAsync();
+        TempData["success"] = "Deleted";
         return RedirectToAction(nameof(Index));
     }
 

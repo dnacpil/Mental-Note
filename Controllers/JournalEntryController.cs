@@ -75,6 +75,7 @@ public class JournalEntryController : Controller
 
             _db.Add(entry);
             await _db.SaveChangesAsync();
+            TempData["success"] = "Saved";
             return RedirectToAction(nameof(Index));
 
         }
@@ -118,6 +119,7 @@ public class JournalEntryController : Controller
                 entry.OwnerId = currentUser.Id;
                 
                 _db.Update(entry);
+                TempData["success"] = "Saved";
                 await _db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -168,6 +170,7 @@ public class JournalEntryController : Controller
         }
         _db.JournalEntry.Remove(entry);
         _db.SaveChangesAsync();
+        TempData["success"] = "Deleted";
         return RedirectToAction(nameof(Index));
     }
 

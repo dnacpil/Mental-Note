@@ -49,7 +49,7 @@ public class MoodRatingController : Controller
 
             _db.Add(moodRating);
             await _db.SaveChangesAsync();
-
+            TempData["success"] = "Saved";
             //_reminderService.CheckMoodAndSendReminder(currentUser.Id);
 
             return RedirectToAction(nameof(Index));
