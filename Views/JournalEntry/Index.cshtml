@@ -3,23 +3,19 @@
     ViewData["Title"] = "Journal Entries";
 }
 <div id="je-page">
-    <section id="je-index-head">
-        <div class="row">
-            <div class="col-9">
-                <div class="p-3">
-                    <h1 class="fw-light">Journal Entries</h2>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="m-2 p-2">
-                    <a asp-controller="JournalEntry" asp-action="Create" class="btn" id="je-new-entry-btn">
-                        <i class="bi bi-journal-plus m-1"></i> Add a New Entry
-                    </a>
-                </div>
-            </div>
+    <section class="d-inline-flex align-items-center" id="je-i-first-section">
+        <div class="ms-3">
+            <h1 class="fw-light">JOURNAL ENTRIES</h2>
         </div>
     </section>
-    <section id="je-index-table">
+    <section id="je-btn-section">
+        <div class="d-flex justify-content-end">
+                <a asp-controller="JournalEntry" asp-action="Create" class="btn" id="je-new-entry-btn">
+                    <i class="bi bi-journal-plus m-1"></i> Add a New Entry
+                </a>
+            </div>
+    </section>
+    <section id="je-i-table-section">
         <div class="container-fluid">
             <table class="table table-striped table-borderless">
                 <thead>

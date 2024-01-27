@@ -5,7 +5,14 @@
 
 @model MoodRating
 <div id="mood-page">
-    <button type="button" class="btn btn-primary d-none" id="showToastBtn">
+    @if(TempData["message"] != null){
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+        toastr.info('@TempData["message"]');
+	</script>
+    }
+    @* <button type="button" class="btn btn-primary d-none" id="showToastBtn">
         Show Toast
     </button>
 
@@ -18,7 +25,7 @@
         </div>
         <div class="toast-body">
         </div>
-    </div>
+    </div> *@
     <div class="row">
         <div class="col">
             <p>On a scale of 1 to 10, with 1 being not great and 10 being fantastic, rate your mood:</p>
@@ -28,6 +35,7 @@
             <form method="POST" asp-action="Create">
                 <div class="col-lg-3">
                     <input asp-for="Rating" class="form-control" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
                 </div>
                 <div class="col-6 col-md-3">
                     <button type="submit" class="btn btn-primary form-control">Add</button>
