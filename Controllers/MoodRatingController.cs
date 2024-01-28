@@ -6,6 +6,8 @@ using MentalNote.Models;
 using MentalNote.Services;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.EJ2.Inputs;
+using Syncfusion.EJ2.Linq;
 
 namespace MentalNote.Controllers;
 
@@ -61,42 +63,75 @@ public class MoodRatingController : Controller
     }
 
     //Dashboard
-    public IActionResult Dashboard()
+    /* public IActionResult Dashboard()
     {
 
         return View();
-    } 
+    }  */
     //To get mood data for chart
-    /* public async Task<ActionResult> Dashboard(string userId)
+    public async Task<ActionResult> Dashboard(string userId)
     {
-        DateTime startDate = DateTime.Today.AddDays(-30); // Change to -30 to get the last 30 days
-        DateTime endDate = DateTime.Today;
+       /*  DateTime startDate = DateTime.Today.AddDays(-30); // Change to -30 to get the last 30 days
+        DateTime endDate = DateTime.Today; 
+        && i.Date >= startDate && i.Date <= endDate*/
 
-        List<LineChartData> moodSummary = await _db.MoodRating
-            .Where(i => i.OwnerId == userId && i.Date >= startDate && i.Date <= endDate)
-            .Select(k => new LineChartData()
-            {
-                day = k.Date,
-                moodRating = k.Rating
-            })
+
+        /* List<MoodRating> MoodRatings = await _db.MoodRating
+            .Where(i => i.OwnerId == userId)
             .ToListAsync();
 
-        DateTime[] last30Days = Enumerable.Range(0, 30)
-            .Select(i => startDate.AddDays(i))
-            .ToArray();
+        List<LineChartData> MoodSummary = MoodRatings
+            .GroupBy(i => i.Date.Date)
+        .Select(k => new LineChartData()
+        {
+            day = k.Key,
+            moodRating = (int)k.Average(r => r.Rating) // Calculate the average rating for the day
+        })
+        .ToList();
 
-        ViewBag.dataSource = from day in last30Days
-                             join moodData in moodSummary
-                             on day equals moodData.day into joined
-                             from moodData in joined.DefaultIfEmpty()
-                             select new
-                             {
-                                 day = day.ToString("dd-MMM"),
-                                 moodRating = moodData?.moodRating ?? 0 // Default to 0 if there's no data for the day
-                             };
+    DateTime[] last30Days = Enumerable.Range(0, 30)
+        .Select(i => startDate.AddDays(i))
+        .ToArray();
 
-        return View();
-    } */
+    ViewBag.dataSource = from day in last30Days
+                         join moodData in MoodSummary
+                         on day equals moodData.day into joined
+                         from moodData in joined.DefaultIfEmpty()
+                         select new
+                         {
+                             day = day.ToString("dd-MMM"),
+                             moodRating = moodData?.moodRating ?? 0
+                         };
+
+    return View(); */
+    DateTime startDate = DateTime.Today.AddDays(-30);
+    DateTime endDate = DateTime.Today;
+
+    List<MoodRating> moodRatings = await _db.MoodRating
+        .Where(i => i.OwnerId == userId && i.Date >= startDate && i.Date <= endDate)
+        .ToListAsync();
+
+    List<LineChartData> moodSummary = moodRatings
+        .GroupBy(i => i.Date.Date)
+        .Select(k => new LineChartData()
+        {
+            day = k.Key,
+            moodRating = (int)k.Average(r => r.Rating)
+        })
+        .ToList();
+
+    ViewBag.dataSource = moodSummary
+        .OrderBy(entry => entry.day)
+        .Select(entry => new
+        {
+            day = entry.day.ToString("dd-MMM"),
+            moodRating = entry.moodRating
+        });
+
+    return View();
+
+        /*  */
+    }
 
     public class LineChartData
     {
@@ -104,20 +139,22 @@ public class MoodRatingController : Controller
         public int moodRating;
     }
     //Reminder feature
-    public void CheckMoodAndSendReminder(string ownerId)
+    public IActionResult CheckMoodAndSendReminder(string ownerId)
     {
-        var moodHistory = _db.MoodRating
+        var MoodHistory = _db.MoodRating
             .Where(m => m.OwnerId == ownerId)
             .OrderByDescending(m => m.Date)
             .Take(50)
             .ToList();
 
-        var daysLowMood = moodHistory.Count(mood => mood.Rating <= 5);
+        var daysLowMood = MoodHistory.Count(mood => mood.Rating <= 5);
 
-        if (daysLowMood <= 3)
+        if (daysLowMood <= 1)
         {
-          TempData["message"] = "It might be time to seek for help again.";
+            TempData["message"] = "It might be time to seek for help again.";
+            
         }
+        return View();
     }
 
     /* private void ShowReminderToUser(string message)
@@ -126,5 +163,5 @@ public class MoodRatingController : Controller
         ReminderMessage = message;
     } */
 
-    public static string? ReminderMessage { get; private set; }
+    //public static string? ReminderMessage { get; private set; }
 }

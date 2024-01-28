@@ -5,15 +5,22 @@ html, body{
 }
 .container-fluid{
   padding: 0;
-  width: 100%;
 /*   background-image: linear-gradient(90deg, #A2A3E9, #F3F8F0) ;
  */}
 
 main {
   min-height: 100%;
   width: 100%;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
   font-family: 'Lato', sans-serif;
+}
+footer{
+    float: left;
+    margin-top: -100px;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 40px;
 }
 h1{
   font-size: 72px;
@@ -40,6 +47,16 @@ h2{
     text-decoration: none;
     color: inherit;
   }
+
+/*HOME*/
+#landing-section{
+  width: 100%;
+  height: 700px;
+}
+#h-second-section{
+  width: 100%;
+  height: 700px;
+}
 /* Journal Entry Views */
 /*#je-page{
   height: 100vh;
@@ -153,10 +170,6 @@ h2{
 }
 
 
-
-footer{
-  margin-top: -60px;
-}
 
 @media (min-width: 768px) {
   html {

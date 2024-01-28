@@ -20,12 +20,13 @@
     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/23.2.4/material.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="~/MentalNote.styles.css" asp-append-version="true" />
-
     <script src="https://cdn.syncfusion.com/ej2/23.2.4/dist/ej2.min.js"></script>
+@*     <script src="https://kit.fontawesome.com/33956ec734.js" crossorigin="anonymous"></script> *@
 </head>
 
 <body>
-    <header>
+    <partial name="_LoginPartial" />
+    @* <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MentalNote</a>
@@ -48,15 +49,18 @@
                         </li>
                     </ul>
                 </div>
-                <partial name="_LoginPartial" />
+                
             </div>
         </nav>
         
-    </header>
-    <div class="container-fluid h-100 d-inline-block">
+    </header> *@
+    <div class="container-fluid h-100">
         <main role="main">
-            <partial name="_Notification" />
+            
             @RenderBody()
+            <partial name="_Notification" />
+            <partial name="_SideBar" />
+            
         </main>
     </div>
 

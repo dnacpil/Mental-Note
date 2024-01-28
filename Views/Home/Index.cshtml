@@ -8,13 +8,13 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<section id="landing-section">
-    <div class="container">
+<section class="d-inline-flex align-items-center justify-content-center" id="landing-section">
+    <div>
         <h1 class="display-4">Hi @UserManager.GetUserName(User)</h1>
     </div>
 </section>
-<section>
-    <div class="container">
+<section class="d-inline-flex align-items-center justify-content-center" id="h-second-section">
+    <div>
         <h2>How are you feeling today?</h2>
         <a asp-controller="MoodRating" asp-action="Index">
             Let's check in with ourselves

@@ -17,10 +17,10 @@
                 <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
                     @* <hr /> *@
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                    <div class="form-floating" my-2>
+                    @* <div class="form-floating" my-2>
                         <input asp-for="Input.UserType" class="form-control" />
                         <label asp-for="Input.UserType" class="form-label"></label>
-                    </div>
+                    </div> *@
                     <div class="form-floating my-2">
                         <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"
                             placeholder="name@example.com" />
