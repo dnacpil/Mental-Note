@@ -23,21 +23,33 @@ iconCss = "fa-solid fa-folder-closed"
 ); *@
 
 }
-<ejs-sidebar id="sidebar" width="250px">
+<ejs-sidebar id="sidebar" width="250" enableDock dockSize="75px" target=".dock-target" enableGestures="false">
     <e-content-template>
-            <div>
-                <ul>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="JournalEntry"
-                            asp-action="Index">Journal Entries</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Notes" asp-action="Index">Notes</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="container">
+            <i id="sidebar-toggler" class="bi bi-chevron-double-left"></i>
+        </div>
+        <div id="menu-container">
+            <ul class="nav flex-column" id="menu-list">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="JournalEntry" asp-action="Index">Journal
+                        Entries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Notes" asp-action="Index">Notes</a>
+                </li>
+            </ul>
+        </div>
     </e-content-template>
 </ejs-sidebar>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        dockBar = document.getElementById('sidebar').ej2_instances[0];
+        document.getElementById('sidebar-toggler').onclick = function () {
+            dockBar.toggle();
+        };
+    });
+</script>

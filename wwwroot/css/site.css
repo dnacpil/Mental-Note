@@ -47,7 +47,57 @@ h2{
     text-decoration: none;
     color: inherit;
   }
+/*SideBar*/
+#sidebar {
+  padding: 10px 20px;
+  overflow: hidden;
+}
+#sidebar.e-close{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#sidebar-toggler{
+  font-size: 1.2rem;
+}
 
+#sidebar-toggler:hover {
+  cursor: pointer;
+  background-color: #48545f14;
+  transform: scale(1.05) translateZ(0px);
+}
+
+#sidebar.e-close .e-anchor-wrap,
+#sidebar.e-close .e-menu-item.e-menu-caret-icon {
+  font-size: 0px;
+}
+
+ /* #sidebar.e-close .sidebar-menu-link {
+      display: none !important;
+  } 
+ */
+#sidebar.e-open .e-anchor-wrap,
+#sidebar.e-close .e-menu-icon,
+#sidebar.e-open .e-menu-icon {
+  visibility: visible;
+}
+
+#sidebar.e-open #sidebar.e-open {
+  display: flex;
+}
+
+#sidebar.e-sidebar.e-right.e-close {
+  visibility: visible;
+  transform: translateX(0%);
+}
+
+/* #sidebar.e-open #sidebar-toggler:before {
+  content: "\f100";
+}
+
+#sidebar.e-close #sidebar-toggler:before {
+  content: "\f100";
+}
+ */
 /*HOME*/
 #landing-section{
   width: 100%;
