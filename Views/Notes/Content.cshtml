@@ -2,13 +2,11 @@
 @{
     ViewData["Title"] = "Notes";
 }
-<div class="container">
+<div class="notes-page">
     <div class="row align-items-center">
-        <div class="col-6">
-            <p>@Model.Note</p>
-        </div>
-        <div class="col-6">
-            <p>@Model.Exercises</p>
-        </div>
+        <p>@Model.Note</p>
+    </div>
+    <div class="row align-items-center">
+        <p>@Model.Exercises</p>
     </div>
 </div>

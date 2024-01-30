@@ -1,37 +1,36 @@
 @model JournalEntry;
-<div id="je-page">
-    <div class="je-ced-views p-2">
-        <div class="text-justify ms-5 mt-2 p-2">
-            <h2>Edit Journal Entry</h1>
+<div class="je-ced-views p-2">
+    <section class="d-inline-flex align-items-center">
+        <div class="je-ed-title ms-3">
+            <h2>EDIT JOURNAL ENTRY</h1>
         </div>
-        <form method="POST" asp-route-id="@Model.JournalEntryID" asp-action="PostEdit">
-            <input type="hidden" asp-for="JournalEntryID" />
-            <div asp-validation-summary="All"></div>
-            <div class="row justify-content ms-5">
-                <div class="col-lg-6">
-                    <label asp-for="Title" class="form-label" id="je-label">Title</label>
+    </section>
+    <section class="je-ced-section">
+        <div class="je-forms">
+            <form method="POST" asp-route-id="@Model.JournalEntryID" asp-action="PostEdit">
+                <input type="hidden" asp-for="JournalEntryID" />
+                <div asp-validation-summary="All"></div>
+                <div class="row align-items-center">
+                    <label asp-for="Title" class="form-label py-1" id="je-label">Title</label>
                     <input asp-for="Title" class="form-control" id="je-input" placeholder="Edit title"
                         style="min-height: 50px;" />
                 </div>
-            </div>
-            <div class="row justify-content ms-5 mt-1">
-                <div class="col-lg-8">
-                    <label asp-for="JournalContent" class="form-label" id="je-label">Journal Entry</label>
+                <div class="row align-items-center">
+                    <label asp-for="JournalContent" class="form-label py-1" id="je-label">Journal Entry</label>
                     <input asp-for="JournalContent" class="form-control" id="je-input" placeholder="Edit content"
                         style="min-height: 300px;" />
                 </div>
-            </div>
-            <div class="row justify-content ms-5 mt-5">
-                <div class="col-6 col-md-3">
-                    <button type="submit" class="btn form-control" id="">Update</button>
+                <div class="row align-items-center">
+                    <div class="text-center my-3">
+                        <button type="submit" class="btn form-control" id="">Update</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-controller="JournalEntry" asp-action="Index" class="btn form-control">
+                            Back to main
+                        </a>
+                    </div>
                 </div>
-                <div class="col-6 col-md-3">
-                    <a asp-controller="JournalEntry" asp-action="Index"
-                        class="btn form-control">
-                        Back to main
-                    </a>
-                </div>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+    </section>
 </div>

@@ -54,19 +54,20 @@
         </nav>
         
     </header> *@
-    <div class="container-fluid h-100">
+    <div id="wrapper">
         <main role="main">
             
             @RenderBody()
             <partial name="_Notification" />
-            <partial name="_SideBar" />
+            @* <partial name="_SideBar" /> *@
             
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer>
+        <div class="container justify-content-center">
             &copy; 2023 Mental Note 
+        </div>
     </footer>
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

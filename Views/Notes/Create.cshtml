@@ -1,32 +1,26 @@
 @model Notes;
-<div id="notes-page">
-    <div class="px-2 py-2" id="n-create-form">
+
+<section class="n-ced-section">
+    <div class="n-forms">
         <form method="POST" asp-action="Create">
             <div asp-validation-summary="All"></div>
-            <div class="text-justify">
-                <h1>Notes</h1>
+            <div class="row align-items-center">
+                <label asp-for="Title" class="form-label py-1" class="n-label">Title</label>
+                <input asp-for="Title" class="form-control py-1" class="n-input" />
             </div>
-            <div class="row justify-content-start my-3">
-                <div class="col-lg-6">
-                    <label asp-for="Title" class="form-label py-1" id="create-label">Title</label>
-                    <input asp-for="Title" class="form-control py-1" id="create-input" />
-                </div>
+            <div class="row align-items-center">
+                <label asp-for="Note" class="form-label py-1"class>Notes</label>
+                <input asp-for="Note" class="form-control py-1"class placeholder=""
+                    style="min-height: 150px;" />
             </div>
-            <div class="row justify-content-start my-3">
-                <div class="col-lg-6">
-                    <label asp-for="Note" class="form-label py-1" id="create-label">Notes</label>
-                    <input asp-for="Note" class="form-control py-1" id="create-input" placeholder="" style="min-height: 150px;" />
-                </div>
+            <div class="row align-items-center">
+                <label asp-for="Exercises" class="form-label py-1"class>Exercise</label>
+                <input asp-for="Exercises" class="form-control py-1"class placeholder=""
+                    style="min-height: 150px;" />
             </div>
-            <div class="row justify-content-start my-3">
-                <div class="col-lg-6">
-                    <label asp-for="Exercises" class="form-label py-1" id="create-label">Exercise</label>
-                    <input asp-for="Exercises" class="form-control py-1" id="create-input" placeholder="" style="min-height: 150px;" />
-                </div>
-            </div>
-            <div class="row pt-2">
-                <div class="col-6 col-md-3">
-                    <button type="submit" class="btn btn-primary form-control">Add</button>
+            <div class="row">
+                <div class="text-center my-3">
+                    <button type="submit" class="btn n-form-btn">Add</button>
                 </div>
                 <div class="col-6 col-md-3">
                     <a asp-controller="Notes" asp-action="Index" class="btn btn-outline-primary border  form-control">
@@ -35,4 +29,4 @@
                 </div>
         </form>
     </div>
-</div>
+</section>

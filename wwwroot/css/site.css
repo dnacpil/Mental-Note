@@ -1,31 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
 
-html, body{
-  height: 100%;
-}
-.container-fluid{
-  padding: 0;
-/*   background-image: linear-gradient(90deg, #A2A3E9, #F3F8F0) ;
- */}
 
-main {
-  min-height: 100%;
-  width: 100%;
-  padding-bottom: 100px;
-  font-family: 'Lato', sans-serif;
-}
-footer{
-    float: left;
-    margin-top: -100px;
-    width: 100%;
-    height: 100px;
-    box-sizing: border-box;
-    padding: 40px;
-}
+
 h1{
   font-size: 72px;
 }
 h2{
+  font-size: 50px;
   font-weight: 300;
   }
   a:link {
@@ -47,71 +28,20 @@ h2{
     text-decoration: none;
     color: inherit;
   }
-/*SideBar*/
-#sidebar {
-  padding: 10px 20px;
-  overflow: hidden;
-}
-#sidebar.e-close{
-  padding-left: 10px;
-  padding-right: 10px;
-}
-#sidebar-toggler{
-  font-size: 1.2rem;
-}
 
-#sidebar-toggler:hover {
-  cursor: pointer;
-  background-color: #48545f14;
-  transform: scale(1.05) translateZ(0px);
-}
-
-#sidebar.e-close .e-anchor-wrap,
-#sidebar.e-close .e-menu-item.e-menu-caret-icon {
-  font-size: 0px;
-}
-
- /* #sidebar.e-close .sidebar-menu-link {
-      display: none !important;
-  } 
- */
-#sidebar.e-open .e-anchor-wrap,
-#sidebar.e-close .e-menu-icon,
-#sidebar.e-open .e-menu-icon {
-  visibility: visible;
-}
-
-#sidebar.e-open #sidebar.e-open {
-  display: flex;
-}
-
-#sidebar.e-sidebar.e-right.e-close {
-  visibility: visible;
-  transform: translateX(0%);
-}
-
-/* #sidebar.e-open #sidebar-toggler:before {
-  content: "\f100";
-}
-
-#sidebar.e-close #sidebar-toggler:before {
-  content: "\f100";
-}
- */
 /*HOME*/
 #landing-section{
   width: 100%;
   height: 700px;
+  background-image: radial-gradient(circle at 94.35384114583333% 89.61588541666666%, #D2E4C7 0%, 20%, rgba(210,228,199,0) 40%), radial-gradient(circle at 6.503906249999999% 88.037109375%, rgba(26,106,255,0.99) 0%, 25%, rgba(26,106,255,0) 50%), radial-gradient(circle at 6.165364583333333% 12.617187499999998%, #7E60DF 0%, 24%, rgba(126,96,223,0) 40%), radial-gradient(circle at 93.6865234375% 11.42578125%, #A9806F 0%, 42%, rgba(169,128,111,0) 70%), radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255,255,255,0) 100%);
 }
 #h-second-section{
   width: 100%;
   height: 700px;
+  background-image: radial-gradient(circle at 94.35384114583333% 89.61588541666666%, #D2E4C7 0%, 20%, rgba(210,228,199,0) 40%), radial-gradient(circle at 6.503906249999999% 88.037109375%, rgba(26,106,255,0.99) 0%, 25%, rgba(26,106,255,0) 50%), radial-gradient(circle at 6.165364583333333% 12.617187499999998%, #7E60DF 0%, 24%, rgba(126,96,223,0) 40%), radial-gradient(circle at 93.6865234375% 11.42578125%, #A9806F 0%, 42%, rgba(169,128,111,0) 70%), radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255,255,255,0) 100%);
 }
+
 /* Journal Entry Views */
-/*#je-page{
-  height: 100vh;
-  background-image: linear-gradient(90deg, #92B079 0%, #F3F8F0 73.6083984375%);
-}*/
 #je-i-first-section{
   height: 125px;
   width: 100%;
@@ -135,7 +65,6 @@ h2{
 }
 #je-th{
   background-color: #D2E4C7; 
-  /*background-color: #92B079;*/
   color: #ffffff;
   text-align: center;
   font-weight: 300;
@@ -151,12 +80,14 @@ h2{
   height: 100%;
   background-image: linear-gradient(90deg, #92B079 0%, #F3F8F0 73.6083984375%);
 }
-#je-create-section{
+.je-ced-section{
   width: 100%;
   height: auto;
+  min-height: 500px;
+  padding: 1%;
   background-image: linear-gradient(90deg, #92B079 0%, #F3F8F0 100%);
 }
-#je-create-form{
+.je-forms{
   width: 80%;
   margin: auto;
   padding: 2%;
@@ -174,43 +105,66 @@ h2{
   border: 1px solid #ffffff;
   border-radius: 5px;
 }
-#je-create-btn{
+.jn-create-btn{
+  width: 200px;
+  border: 1px solid #ffffff;
+  font-weight: 300;
+}
+.je-ed-title{
+width: 100%;
+height: 125px;
+font-weight: 400;
+color: #ffffff;
+}
+
+/* Notes Views */
+.notes-page{
+  height: 100%;
+  background-image: radial-gradient(circle at 94.35384114583333% 89.61588541666666%, #D2E4C7 0%, 20%, rgba(210,228,199,0) 40%), radial-gradient(circle at 3.4928385416666665% 96.09700520833333%, rgba(26,106,255,0.99) 0%, 25%, rgba(26,106,255,0) 50%), radial-gradient(circle at 6.165364583333333% 12.617187499999998%, #92B079 0%, 42%, rgba(146,176,121,0) 70%), radial-gradient(circle at 93.6865234375% 11.42578125%, #A9806F 0%, 42%, rgba(169,128,111,0) 70%), radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255,255,255,0) 100%);
+}
+
+#n-i-first-section{
+  height: 125px;
+  width: 100%;
+  color: #ffffff;
+}
+#n-btn-section{
+  height: 65px;
+  padding: 1%;
+}
+#n-i-cards{
+  height: auto;
+  min-height: 500px;
+  padding: 2%;
+}
+.n-ced-section{
+  background-image: linear-gradient(90deg, #95B9FF 0%, #F3F8F0 100%);
+
+}
+.n-forms{
+  width: 80%;
+  margin: auto;
+  padding: 5%;
+}
+.n-label{
+  font-weight: 100;
+  font-size: 18px;
+  color: #000000;
+}
+.n-input{
+  font-weight: 100;
+  font-size: 18px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+.n-form-btn{
   width: 200px;
   border: 1px solid #ffffff;
   font-weight: 300;
 }
 
-/* Notes Views */
-#notes-page{
-  min-height: 100vh;
-  background-image: linear-gradient(90deg, #95B9FF 0%, #F3F8F0 100%);
-}
-/*#n-create-btn{
-
-}*/
-#myTab{
-  background-color: #95B9FF;
-  font-weight: 300;
-  font-size: 20px;
-}
-#myTabContent{
-  background-color: #95B9FF;
-}
-#n-th{
-  background-color: #DCE8FF;
-  font-weight: 300;
-  font-size: 20px;
-  color: #000000;
-}
-#n-tbody{
-  background-color: #F6F6F6;
-  font-weight: 300;
-  font-size: 20px;
-  color: #000000;
-}
 
 /*Login and Registration Page*/
-
 #login-container{
   width: 80%;
   margin: auto;

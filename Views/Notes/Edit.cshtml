@@ -1,6 +1,6 @@
 @model Notes;
-<div id="notes-page p-2">
-    <div id="n-ced-views">
+<div class="notes-page">
+    <section class="n-ced-section">
         <form method="POST" asp-route-id="@Model.NoteID asp-action=" PostEdit" id="">
             <input type="hidden" asp-for="NoteID" />
             <div asp-validation-summary="All"></div>
@@ -10,7 +10,7 @@
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
                     <label asp-for="Title" class="form-label">Title</label>
-                    <input asp-for="Title" class="form-control" id="" placeholder="Edit title" />
+                    <input asp-for="Title" class="form-control" placeholder="Edit title" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
@@ -39,5 +39,5 @@
                 </div>
             </div>
         </form>
-    </div>
+    </section>
 </div>

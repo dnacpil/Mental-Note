@@ -1,24 +1,19 @@
 @model JournalEntry;
 
-    <section class="d-inline-flex align-items-center" id="je-create-section">
+    <section class="je-ced-section">
         @* <div class="je-ced-views p-2"> *@
-        <div id="je-create-form">
+        <div class="je-forms">
             <form method="POST" asp-action="Create">
                 <div asp-validation-summary="All"></div>
                 <div class="row align-items-center">
-                    <div class="col">
                         <label asp-for="Title" class="form-label py-1" id="je-label">Title</label>
                         <input asp-for="Title" class="form-control py-1" id="je-input" placeholder="Add a title"
                             style="min-height: 50px;" />
-                    </div>
                 </div>
                 <div class="row align-items-center">
-                    <div class="col">
                         <label asp-for="JournalContent" class="form-label py-1" id="je-label">Journal Entry</label>
                         <input asp-for="JournalContent" class="form-control py-1" id="je-input"
                             placeholder="Write about your thoughts, feelings, ideas..." style="min-height: 300px;" />
-                        <span asp-validation-for="JournalContent" class="text-danger"></span>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="text-center my-3">

@@ -1,6 +1,8 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+/* 
+Navigation
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -11,39 +13,92 @@ a {
   color: #0077cc;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 
-}
+} */
 
-.border-top {
+/*class below is assigned to footer*/
+/* .border-top {
   border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
-
+class below is assigned to nav
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+ */
+ html, body{
+  height: 100%;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
+main {
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  padding-bottom: 100px;
+  font-family: 'Lato', sans-serif;
+}
+ /* SideBar */
+#sidebar {
+  padding: 10px 20px;
+  overflow: hidden;
+}
+#sidebar.e-close{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#sidebar-toggler{
+  font-size: 1.2rem;
+}
+
+#sidebar-toggler:hover {
+  cursor: pointer;
+  background-color: #48545f14;
+  transform: scale(1.05) translateZ(0px);
+}
+
+#sidebar.e-close .e-anchor-wrap,
+#sidebar.e-close .e-menu-item.e-menu-caret-icon {
+  font-size: 0px;
+}
+
+ /* #sidebar.e-close .sidebar-menu-link {
+      display: none !important;
+  } 
+ */
+#sidebar.e-open .e-anchor-wrap,
+#sidebar.e-close .e-menu-icon,
+#sidebar.e-open .e-menu-icon {
+  visibility: visible;
+}
+
+#sidebar.e-open #sidebar.e-open {
+  display: flex;
+}
+
+#sidebar.e-sidebar.e-right.e-close {
+  visibility: visible;
+  transform: translateX(0%);
+}
+
+/* #sidebar.e-open #sidebar-toggler:before {
+  content: "\f100";
+}
+
+#sidebar.e-close #sidebar-toggler:before {
+  content: "\f100";
+}
+ */
+
+ 
+ footer{
+  float: left;
+  width: 100%;
+  height: 100px;
+  margin-top: -100px;
+  box-sizing: border-box;
+  padding: 40px;
 }
