@@ -5,17 +5,17 @@
         <form method="POST" asp-action="Create">
             <div asp-validation-summary="All"></div>
             <div class="row align-items-center">
-                <label asp-for="Title" class="form-label py-1" class="n-label">Title</label>
-                <input asp-for="Title" class="form-control py-1" class="n-input" />
+                <label asp-for="Title" class="form-label py-1 n-label">Title</label>
+                <input asp-for="Title" class="form-control py-1 n-input" />
             </div>
             <div class="row align-items-center">
-                <label asp-for="Note" class="form-label py-1"class>Notes</label>
-                <input asp-for="Note" class="form-control py-1"class placeholder=""
+                <label asp-for="Note" class="form-label py-1 n-label"class>Notes</label>
+                <input type="text" asp-for="Note" class="form-control py-1 n-input" placeholder=""
                     style="min-height: 150px;" />
             </div>
             <div class="row align-items-center">
-                <label asp-for="Exercises" class="form-label py-1"class>Exercise</label>
-                <input asp-for="Exercises" class="form-control py-1"class placeholder=""
+                <label asp-for="Exercises" class="form-label py-1 n-label"class>Exercise</label>
+                <input type="text" asp-for="Exercises" class="form-control py-1 n-input" placeholder=""
                     style="min-height: 150px;" />
             </div>
             <div class="row">

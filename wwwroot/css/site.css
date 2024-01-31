@@ -29,6 +29,8 @@ h2{
     color: inherit;
   }
 
+  
+
 /*HOME*/
 #landing-section{
   width: 100%;
@@ -145,6 +147,7 @@ color: #ffffff;
   width: 80%;
   margin: auto;
   padding: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .n-label{
   font-weight: 100;
@@ -154,13 +157,33 @@ color: #ffffff;
 .n-input{
   font-weight: 100;
   font-size: 18px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  border: 1px solid #F6F6F6;
+  border-radius: 0;
 }
 .n-form-btn{
   width: 200px;
   border: 1px solid #ffffff;
   font-weight: 300;
+}
+
+/* Mood Tracker Views*/
+.mood-page{
+  background-image: radial-gradient(circle at 82.56998697916667% 11.536458333333334%, #95B9FF 0%, 16.625%, rgba(149,185,255,0) 35%), radial-gradient(circle at 82.17447916666667% 74.189453125%, #FFBFA1 0%, 30.875%, rgba(255,191,161,0) 65%), radial-gradient(circle at 52.86132812499999% 25.478515624999996%, #F6E6FF 0%, 41.1%, rgba(246,230,255,0) 60%), radial-gradient(circle at 38.623046875% 66.943359375%, #7E60DF 0%, 25.5%, rgba(126,96,223,0) 50%), radial-gradient(circle at 14.4189453125% 33.421223958333336%, #D2E4C7 0%, 34.25%, rgba(210,228,199,0) 50%), radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255,255,255,0) 100%);
+  --bg-overlay-color: transparent;
+  font-size: 20px;
+}
+#md-i-first-sectio{
+height: 250px;
+width: 100%;
+}
+
+#md-i-2nd-section{
+  height: 300px;
+  width: 100%;
+}
+#md-i-3rd-section{
+  height: 300px;
+  width: 100%;
 }
 
 
@@ -173,7 +196,9 @@ color: #ffffff;
   padding: 1%;
 }
 
-
+/* .validation-summary-errors{
+  
+} */
 
 @media (min-width: 768px) {
   html {

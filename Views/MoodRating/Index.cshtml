@@ -4,33 +4,38 @@
 @inject UserManager<IdentityUser> UserManager
 
 @model MoodRating
-<div id="mood-page">
-    <section class="d-inline-flex align-items-center">
-        <div>
+
+<div class="mood-page">
+    <section class="d-inline-flex align-items-center" id="md-i-first-section">
+        <div class="container">
             <p>On a scale of 1 to 10, with 1 being not great and 10 being fantastic, rate your mood:</p>
 
-            @* Add emoji or slider rating here. But normal input for now...*@
-
+        </div>
+        <div>
             <form method="POST" asp-action="Create">
-                <div class="col-lg-3">
+                <div class="row align-items-center">
                     <input asp-for="Rating" class="form-control" />
                     <span asp-validation-for="Rating" class="text-danger"></span>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="row align-items-center">
                     <button type="submit" class="btn btn-primary form-control">Add</button>
                 </div>
             </form>
         </div>
     </section>
-    <section>
+    <section class="d-inline-flex align-items-center" id="md-i-2nd-section">
         <p>Select words that resonate with your current emotions</p>
 
         @* Add selection tags here*@
     </section>
 
-    <section>
-        <p>Your emotions are unique, just like you. Take a moment to reflect.</p>
-        <p>Feel the need to express more? Turn your emotions into words. Start journaling now and embrace the
-            therapeutic power of self-reflection.</p>
+    <section class="d-inline-flex align-items-center" id="md-i-3rd-section">
+        <div class="row w-100">
+            <p>Your emotions are unique, just like you. Take a moment to reflect.</p>
+        </div>
+        <div class="row w-100">
+            <p>Feel the need to express more? Turn your emotions into words. Start journaling now and embrace the therapeutic power of self-reflection.</p>
+        </div>
+
     </section>
 </div>

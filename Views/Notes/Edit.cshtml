@@ -9,27 +9,27 @@
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Title" class="form-label">Title</label>
-                    <input asp-for="Title" class="form-control" placeholder="Edit title" />
+                    <label asp-for="Title" class="form-label n-label">Title</label>
+                    <input asp-for="Title" class="form-control n-input" placeholder="Edit title" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Note" class="form-label">Notes</label>
-                    <input asp-for="Note" class="form-control" placeholder="Edit content" style="min-height: 150px;" />
+                    <label asp-for="Note"  n-label>Notes</label>
+                    <input asp-for="Note" class="form-control n-input" placeholder="Edit content" style="min-height: 150px;" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Exercises" class="form-label">Edit Exercises</label>
-                    <input asp-for="Exercises" class="form-control" placeholder="Edit exercises"
+                    <label asp-for="Exercises"  n-label>Edit Exercises</label>
+                    <input asp-for="Exercises" class="form-control n-input" placeholder="Edit exercises"
                         style="min-height: 150px;" />
 
                 </div>
             </div>
-            <div class="row pt-2">
-                <div class="col-6 col-md-3">
-                    <button type="submit" class="btn btn-primary form-control">Update</button>
+            <div class="row">
+                <div class="text-center">
+                    <button type="submit" class="btn btn n-form-btn">Update</button>
                 </div>
                 <div class="col-6 col-md-3">
                     <a asp-controller="JournalEntry" asp-action="Index"
