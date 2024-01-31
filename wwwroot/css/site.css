@@ -29,7 +29,12 @@ h2{
     color: inherit;
   }
 
-  
+.parallax{
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 /*HOME*/
 #landing-section{
@@ -172,18 +177,21 @@ color: #ffffff;
   --bg-overlay-color: transparent;
   font-size: 20px;
 }
-#md-i-first-sectio{
-height: 250px;
+#md-i-first-section{
+height: 300px;
 width: 100%;
+padding: 2%;
 }
 
 #md-i-2nd-section{
   height: 300px;
   width: 100%;
+  padding: 2%;
 }
 #md-i-3rd-section{
   height: 300px;
   width: 100%;
+  padding: 2%;
 }
 
 
@@ -196,16 +204,14 @@ width: 100%;
   padding: 1%;
 }
 
-/* .validation-summary-errors{
-  
-} */
+.validation-summary-errors{
+  font-size: 12px;
+  font-weight: 100;
+  color: red;
+}
 
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }

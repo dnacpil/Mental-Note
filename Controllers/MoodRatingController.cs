@@ -26,7 +26,6 @@ public class MoodRatingController : Controller
         //, ReminderService reminderService _reminderService = reminderService;
     }
     public async Task<IActionResult> IndexAsync(MoodRating moodRating)
-
     {
         IdentityUser currentUser = await _userManager.GetUserAsync(User);
 
@@ -41,10 +40,10 @@ public class MoodRatingController : Controller
         return View();
     }
 
+    //To add a rating
     [HttpGet]
     public IActionResult Create()
     {
-
         return View();
     }
 
@@ -86,6 +85,60 @@ public class MoodRatingController : Controller
         }
 
         return Json(new { success = true, message = "Reminder checked." });
+    }
+
+
+    //Dashboard
+    public async Task<ActionResult> Dashboard(string userId)
+    {
+        DateTime StartDate = DateTime.Today.AddDays(-30);
+        DateTime EndDate = DateTime.Today;
+
+        List<MoodRating> moodRatings = await _db.MoodRating
+            .Where(i => i.OwnerId == userId && i.Date >= StartDate && i.Date <= EndDate)
+            .ToListAsync();
+
+        List<SplineChartData> LowMoodSummary = moodRatings
+            .Where(r => r.Rating < 5)
+            .GroupBy(i => i.Date.Date)
+            .Select(k => new SplineChartData()
+            {
+                day = k.Key,
+                moodRating = (int)k.Average(r => r.Rating)
+            })
+            .ToList();
+
+        List<SplineChartData> HighMoodSummary = moodRatings
+            .Where(r => r.Rating >= 6 && r.Rating <= 10)
+            .GroupBy(i => i.Date.Date)
+            .Select(k => new SplineChartData()
+            {
+                day = k.Key,
+                moodRating = (int)k.Average(r => r.Rating)
+            })
+            .ToList();
+
+        DateTime[] Last30Days = Enumerable.Range(0, 30)
+        .Select(i => StartDate.AddDays(i))
+        .ToArray();
+
+        ViewBag.SplineChartData = from day in Last30Days
+                                  join low in LowMoodSummary on day equals low.day into lowGroup
+                                  join high in HighMoodSummary on day equals high.day into highGroup
+                                  select new
+                                  {
+                                      day = day.ToString("dd-MMM"),
+                                      lowMoodRating = lowGroup.Any() ? lowGroup.First().moodRating : 0,
+                                      highMoodRating = highGroup.Any() ? highGroup.First().moodRating : 0,
+                                  };
+
+        return View();
+
+    }
+    public class SplineChartData
+    {
+        public DateTime day;
+        public int moodRating;
     }
 }
 

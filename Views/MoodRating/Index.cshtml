@@ -6,34 +6,35 @@
 @model MoodRating
 
 <div class="mood-page">
-    <section class="d-inline-flex align-items-center" id="md-i-first-section">
-        <div class="container">
+    <section id="md-i-first-section">
+        <div class="row text-center" id="md-i-row1">
             <p>On a scale of 1 to 10, with 1 being not great and 10 being fantastic, rate your mood:</p>
-
         </div>
-        <div>
+        <div class="row align-items-center" id="md-i-row2">
             <form method="POST" asp-action="Create">
+                <div asp-validation-summary="All"></div>
                 <div class="row align-items-center">
                     <input asp-for="Rating" class="form-control" />
-                    <span asp-validation-for="Rating" class="text-danger"></span>
                 </div>
                 <div class="row align-items-center">
-                    <button type="submit" class="btn btn-primary form-control">Add</button>
+                    <button type="submit" class="btn">Add</button>
                 </div>
             </form>
         </div>
     </section>
-    <section class="d-inline-flex align-items-center" id="md-i-2nd-section">
-        <p>Select words that resonate with your current emotions</p>
+    <section id="md-i-2nd-section">
+        <div class="row text-center">
+            <p>Select words that resonate with your current emotions</p>
+        </div>
 
         @* Add selection tags here*@
     </section>
 
-    <section class="d-inline-flex align-items-center" id="md-i-3rd-section">
-        <div class="row w-100">
+    <section id="md-i-3rd-section">
+        <div class="row text-center">
             <p>Your emotions are unique, just like you. Take a moment to reflect.</p>
         </div>
-        <div class="row w-100">
+        <div class="row text-center">
             <p>Feel the need to express more? Turn your emotions into words. Start journaling now and embrace the therapeutic power of self-reflection.</p>
         </div>
 
