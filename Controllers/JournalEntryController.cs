@@ -24,14 +24,9 @@ public class JournalEntryController : Controller
     [HttpGet]
     public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrder)
     {
-        if (_db.JournalEntry == null)
-        {
-            return NotFound();
-        }
-
         ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
         ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
-
+        
         // Get the currently signed-in user
         IdentityUser currentUser = await _userManager.GetUserAsync(User);
 
@@ -50,6 +45,7 @@ public class JournalEntryController : Controller
                 entries = entries.OrderBy(e => e.EntryDate);
                 break;
         }
+
 
         return View(await entries.AsNoTracking().ToListAsync());
     }
@@ -117,7 +113,7 @@ public class JournalEntryController : Controller
 
                 entry.Owner = currentUser;
                 entry.OwnerId = currentUser.Id;
-                
+
                 _db.Update(entry);
                 TempData["success"] = "Saved";
                 await _db.SaveChangesAsync();

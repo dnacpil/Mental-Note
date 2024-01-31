@@ -10,10 +10,10 @@
     </section>
     <section id="je-btn-section">
         <div class="d-flex justify-content-end">
-                <a asp-controller="JournalEntry" asp-action="Create" class="btn jn-create-btn">
-                    <i class="bi bi-journal-plus m-1"></i> Add a New Entry
-                </a>
-            </div>
+            <a asp-controller="JournalEntry" asp-action="Create" class="btn jn-create-btn">
+                <i class="bi bi-journal-plus m-1"></i> Add a New Entry
+            </a>
+        </div>
     </section>
     <section id="je-i-table-section">
         <div class="container-fluid">
@@ -29,38 +29,15 @@
                         <th scope="col" id="je-th">Actions</th>
                     </tr>
                 <tbody class="table-group-divider justify-content-center~" id="je-tbody">
-                    @foreach (var obj in Model)
+                        @foreach (var obj in Model)
                         {
                         <tr>
                             <td>@obj.EntryDate</td>
                                 @*.ToString("dd/MM/yyyy")*@
                             <td>@obj.Title</td>
                             <td>
-                                <a class="text-muted m-1" asp-action="Content" asp-route-id="@obj.JournalEntryID"
-                                    data-bs-toggle="modal" data-bs-target="#content-modal">
+                                <a class="text-muted m-1" asp-action="Content" asp-route-id="@obj.JournalEntryID">
                                     <i class="bi bi-book"></i></a>
-                                <div class="modal fade" id="content-modal" tabindex="-1" aria-labelledby="contentModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div asp-route-id="@obj.JournalEntryID class=" modal-body">
-                                                <div class="container">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-6">
-                                                            <p>@obj.JournalContent</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <a class="text-muted m-1" asp-action="Edit" asp-route-id="@obj.JournalEntryID"><i
                                         class="bi bi-pen"></i></a>
                                 <a class="text-muted m-1" asp-action="Delete" asp-route-id="@obj.JournalEntryID"><i

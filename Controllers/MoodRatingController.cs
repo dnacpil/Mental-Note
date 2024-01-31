@@ -25,7 +25,7 @@ public class MoodRatingController : Controller
         _db = context;
         //, ReminderService reminderService _reminderService = reminderService;
     }
-    public async Task<IActionResult> IndexAsync(MoodRating moodRating, string ownerId)
+    public async Task<IActionResult> IndexAsync(MoodRating moodRating)
 
     {
         IdentityUser currentUser = await _userManager.GetUserAsync(User);
