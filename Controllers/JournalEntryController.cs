@@ -24,9 +24,14 @@ public class JournalEntryController : Controller
     [HttpGet]
     public async Task<ActionResult<IEnumerable<JournalEntry>>> Index(string? sortOrder)
     {
-        ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-        ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
-        
+        if (_db.JournalEntry == null)
+        {
+            return NotFound();
+        }
+
+        ViewData["DateSortParm"] = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+        ViewData["NameSortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
+
         // Get the currently signed-in user
         IdentityUser currentUser = await _userManager.GetUserAsync(User);
 
@@ -37,20 +42,22 @@ public class JournalEntryController : Controller
 
         switch (sortOrder)
         {
-            case "name_desc":
+            case "date_desc":
+                entries = entries.OrderByDescending(e => e.EntryDate);
+                break;
+            case "Title":
+                entries = entries.OrderBy(e => e.Title);
+                break;
+            case "title_desc":
                 entries = entries.OrderByDescending(e => e.Title);
                 break;
-
             default:
                 entries = entries.OrderBy(e => e.EntryDate);
                 break;
         }
 
-
         return View(await entries.AsNoTracking().ToListAsync());
     }
-
-
     // APIs to create, edit and delete journal entries
     [HttpGet]
     public IActionResult Create()

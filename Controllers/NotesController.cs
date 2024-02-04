@@ -28,9 +28,10 @@ public class NotesController : Controller
             return NotFound();
         }
 
-        ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-        ViewData["CategorySortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
+        ViewData["DateSortParm"] = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+        ViewData["NameSortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
 
+        // Get the currently signed-in user
         IdentityUser currentUser = await _userManager.GetUserAsync(User);
 
 
@@ -40,15 +41,19 @@ public class NotesController : Controller
 
         switch (sortOrder)
         {
-            case "name_desc":
+            case "date_desc":
+                item = item.OrderByDescending(e => e.NoteDate);
+                break;
+            case "Title":
+                item = item.OrderBy(e => e.Title);
+                break;
+            case "title_desc":
                 item = item.OrderByDescending(e => e.Title);
                 break;
-
             default:
-                item = item.OrderBy(n => n.NoteDate);
+                item = item.OrderBy(e => e.NoteDate);
                 break;
         }
-
         return View(await item.AsNoTracking().ToListAsync());
 
     }

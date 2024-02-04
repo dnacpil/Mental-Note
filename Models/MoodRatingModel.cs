@@ -6,6 +6,7 @@ public class MoodRating
 {
    [Key]
    public int MoodRatingID { get; set; }
+   [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
    [DataType(DataType.Date)]
    public DateTime Date { get; set; } = DateTime.Now;
    //public string? Emoji { get; set; }

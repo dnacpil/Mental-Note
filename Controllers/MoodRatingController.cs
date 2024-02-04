@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using MentalNote.Data;
 using MentalNote.Models;
-using MentalNote.Services;
 using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using Syncfusion.EJ2.Inputs;
@@ -89,56 +88,60 @@ public class MoodRatingController : Controller
 
 
     //Dashboard
-    public async Task<ActionResult> Dashboard(string userId)
+    public async Task<ActionResult> Dashboard(MoodRating moodRating)
     {
-        DateTime StartDate = DateTime.Today.AddDays(-30);
-        DateTime EndDate = DateTime.Today;
+        IdentityUser currentUser = await _userManager.GetUserAsync(User);
 
-        List<MoodRating> moodRatings = await _db.MoodRating
-            .Where(i => i.OwnerId == userId && i.Date >= StartDate && i.Date <= EndDate)
+        moodRating.Owner = currentUser;
+        moodRating.OwnerId = currentUser.Id;
+
+        List<MoodRating> MoodRatings = await _db.MoodRating
+            .Where(i => i.OwnerId == currentUser.Id)
             .ToListAsync();
 
-        List<SplineChartData> LowMoodSummary = moodRatings
-            .Where(r => r.Rating < 5)
-            .GroupBy(i => i.Date.Date)
-            .Select(k => new SplineChartData()
+        // Data for Doughnut Chart: calculation of low mood (less than 5) and high mood (6 to 10)
+        int lowMoodCount = MoodRatings.Count(rating => rating.Rating <= 5);
+        int highMoodCount = MoodRatings.Count(rating => rating.Rating >= 6 && rating.Rating <= 10);
+
+        double totalMoodCount = lowMoodCount + highMoodCount;
+        double lowMoodPercentage = lowMoodCount / totalMoodCount * 100;
+        double highMoodPercentage = highMoodCount / totalMoodCount * 100;
+
+        List<DoughnutChartData> DoughnutChart = new List<DoughnutChartData>
             {
-                day = k.Key,
-                moodRating = (int)k.Average(r => r.Rating)
-            })
-            .ToList();
+                new DoughnutChartData { MoodCategory = "Low Mood", Percentage = lowMoodPercentage },
+                new DoughnutChartData { MoodCategory = "High Mood", Percentage = highMoodPercentage }
+            };
 
-        List<SplineChartData> HighMoodSummary = moodRatings
-            .Where(r => r.Rating >= 6 && r.Rating <= 10)
-            .GroupBy(i => i.Date.Date)
-            .Select(k => new SplineChartData()
-            {
-                day = k.Key,
-                moodRating = (int)k.Average(r => r.Rating)
-            })
-            .ToList();
+        ViewBag.doughnutDataSource = DoughnutChart;
 
-        DateTime[] Last30Days = Enumerable.Range(0, 30)
-        .Select(i => StartDate.AddDays(i))
-        .ToArray();
+        //To display the mood ratings for the last 30 days 
+        DateTime startDate = DateTime.Today.AddDays(-30);
+        DateTime endDate = DateTime.Today;
 
-        ViewBag.SplineChartData = from day in Last30Days
-                                  join low in LowMoodSummary on day equals low.day into lowGroup
-                                  join high in HighMoodSummary on day equals high.day into highGroup
-                                  select new
-                                  {
-                                      day = day.ToString("dd-MMM"),
-                                      lowMoodRating = lowGroup.Any() ? lowGroup.First().moodRating : 0,
-                                      highMoodRating = highGroup.Any() ? highGroup.First().moodRating : 0,
-                                  };
+        List<LineChartData> LineChart = MoodRatings.Select(rating => new LineChartData
+        {
+            Date = rating.Date.ToString("yyyy-MM-dd"),
+            MoodRating = rating.Rating
+        }).ToList();
 
+        ViewBag.dataSource = LineChart;
         return View();
 
     }
-    public class SplineChartData
+
+    public class DoughnutChartData
     {
-        public DateTime day;
-        public int moodRating;
+        public string MoodCategory { get; set; }
+        public double Percentage { get; set; }
+    }
+    public class LineChartData
+    {
+        public string Date { get; set; }
+        public int MoodRating { get; set; }
     }
 }
+
+
+
 
