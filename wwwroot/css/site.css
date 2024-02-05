@@ -9,6 +9,10 @@ h2{
   font-size: 50px;
   font-weight: 300;
   }
+p{
+  font-size: 18px;
+  font-weight: 300;
+}
   a:link {
     text-decoration: none;
     color: inherit;
@@ -87,7 +91,10 @@ h2{
   font-weight: 300;
   text-align: justify;
 }
-
+/*Breadcrumb*/
+.breadcrumb{
+  color: #F6E6FF;
+}
 /*HOME*/
 #landing-section{
   width: 100%;
@@ -142,7 +149,7 @@ h2{
 .je-ced-section{
   width: 100%;
   height: auto;
-  min-height: 500px;
+  min-height: 600px;
   padding: 1%;
   background-image: linear-gradient(90deg, #92B079 0%, #F3F8F0 100%);
 }
@@ -171,17 +178,15 @@ h2{
 }
 .je-ed-title{
 width: 100%;
-height: 125px;
+height: 100px;
 font-weight: 400;
 color: #ffffff;
 }
 
 /* Notes Views */
 .notes-page{
-  height: 100%;
   background-image: radial-gradient(circle at 94.35384114583333% 89.61588541666666%, #D2E4C7 0%, 20%, rgba(210,228,199,0) 40%), radial-gradient(circle at 3.4928385416666665% 96.09700520833333%, rgba(26,106,255,0.99) 0%, 25%, rgba(26,106,255,0) 50%), radial-gradient(circle at 6.165364583333333% 12.617187499999998%, #92B079 0%, 42%, rgba(146,176,121,0) 70%), radial-gradient(circle at 93.6865234375% 11.42578125%, #A9806F 0%, 42%, rgba(169,128,111,0) 70%), radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255,255,255,0) 100%);
 }
-
 #n-i-first-section{
   height: 125px;
   width: 100%;
@@ -197,8 +202,7 @@ color: #ffffff;
   padding: 2%;
 }
 .n-ced-section{
-  background-image: linear-gradient(90deg, #95B9FF 0%, #F3F8F0 100%);
-
+  background-image: linear-gradient(90deg, #1A6AFF 0%, #F3F8F0 100%);
 }
 .n-forms{
   width: 80%;
@@ -224,7 +228,10 @@ color: #ffffff;
   border: 1px solid #ffffff;
   font-weight: 300;
 }
-
+.n-content-section{
+  min-height: 600px;
+  background-image: radial-gradient(circle at 94.35384114583333% 89.61588541666666%, #D2E4C7 0%, 20%, rgba(210,228,199,0) 40%), radial-gradient(circle at 3.4928385416666665% 96.09700520833333%, rgba(26,106,255,0.99) 0%, 25%, rgba(26,106,255,0) 50%), radial-gradient(circle at 6.165364583333333% 12.617187499999998%, #92B079 0%, 42%, rgba(146,176,121,0) 70%), radial-gradient(circle at 93.6865234375% 11.42578125%, #A9806F 0%, 42%, rgba(169,128,111,0) 70%), radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255,255,255,0) 100%);
+}
 /* Mood Tracker Views*/
 .mood-page{
   background-image: radial-gradient(circle at 82.56998697916667% 11.536458333333334%, #95B9FF 0%, 16.625%, rgba(149,185,255,0) 35%), radial-gradient(circle at 82.17447916666667% 74.189453125%, #FFBFA1 0%, 30.875%, rgba(255,191,161,0) 65%), radial-gradient(circle at 52.86132812499999% 25.478515624999996%, #F6E6FF 0%, 41.1%, rgba(246,230,255,0) 60%), radial-gradient(circle at 38.623046875% 66.943359375%, #7E60DF 0%, 25.5%, rgba(126,96,223,0) 50%), radial-gradient(circle at 14.4189453125% 33.421223958333336%, #D2E4C7 0%, 34.25%, rgba(210,228,199,0) 50%), radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255,255,255,0) 100%);
@@ -247,7 +254,12 @@ padding: 2%;
   width: 100%;
   padding: 2%;
 }
-
+#dashboard-page{
+  background-image: linear-gradient(120deg, rgba(126,96,223,0.9) 0%, #FFFFFF 100%);
+}
+/* .mr-section{
+  height: 400px;
+} */
 
 /*Login and Registration Page*/
 #login-container{

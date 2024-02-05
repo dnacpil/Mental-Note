@@ -5,7 +5,6 @@ using MentalNote.Models;
 namespace MentalNote.Data
 {
    public class MentalNoteDbContext : IdentityDbContext
-   //<RegistrationVM>
    {
     protected override void OnModelCreating(ModelBuilder builder)
     {

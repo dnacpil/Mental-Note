@@ -2,11 +2,23 @@
 @{
     ViewData["Title"] = "Notes";
 }
-<div class="notes-page">
+<section class="n-content-section px-2 py-2">
+    <div class="row">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Notes" asp-action="Index">Notes List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Note</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <p>@Model.Title</p>
+    </div>
     <div class="row align-items-center">
         <p>@Model.Note</p>
     </div>
     <div class="row align-items-center">
         <p>@Model.Exercises</p>
     </div>
-</div>
+</section>

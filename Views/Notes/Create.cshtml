@@ -18,24 +18,18 @@
                 <input asp-for="Title" class="form-control py-1 n-input" />
             </div>
             <div class="row align-items-center">
-                <label asp-for="Note" class="form-label py-1 n-label"class>Notes</label>
+                <label asp-for="Note" class="form-label py-1 n-label" class>Notes</label>
                 <input type="text" asp-for="Note" class="form-control py-1 n-input" placeholder=""
                     style="min-height: 150px;" />
             </div>
             <div class="row align-items-center">
-                <label asp-for="Exercises" class="form-label py-1 n-label"class>Exercise</label>
+                <label asp-for="Exercises" class="form-label py-1 n-label" class>Exercise</label>
                 <input type="text" asp-for="Exercises" class="form-control py-1 n-input" placeholder=""
                     style="min-height: 150px;" />
             </div>
             <div class="row">
-                <div class="text-center my-3">
-                    <button type="submit" class="btn n-form-btn">Add</button>
-                </div>
-                <div class="col-6 col-md-3">
-                    <a asp-controller="Notes" asp-action="Index" class="btn btn-outline-primary border  form-control">
-                        Back to main
-                    </a>
-                </div>
+                <button type="submit" class="btn n-form-btn">Add</button>
+            </div>
         </form>
     </div>
 </section>
