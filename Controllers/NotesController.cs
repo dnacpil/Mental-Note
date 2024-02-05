@@ -23,21 +23,20 @@ public class NotesController : Controller
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Notes>>> Index(string? sortOrder)
     {
-        if (_db.Notes == null)
-        {
-            return NotFound();
-        }
-
-        ViewData["DateSortParm"] = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
-        ViewData["NameSortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
-
-        // Get the currently signed-in user
+        // To get the ID of the user currently signed-in
         IdentityUser currentUser = await _userManager.GetUserAsync(User);
-
 
         var item = from i in _db.Notes
                    where i.OwnerId == currentUser.Id
                    select i;
+
+        if (!item.Any())
+        {
+            TempData["empty"] = "There are no notes at the moment.";
+        }
+
+        ViewData["DateSortParm"] = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
+        ViewData["NameSortParm"] = sortOrder == "Title" ? "title_desc" : "Title";
 
         switch (sortOrder)
         {

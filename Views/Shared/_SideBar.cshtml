@@ -1,53 +1,49 @@
-@{
-    @* List<Object> menuItems = new List<Object>();
-menuItems.Add(
-new{
-text = "Journal",
-url = "api/JournalEntry/Index",
-iconCss = "fa-solid fa-folder-closed"
-}
-);
-menuItems.Add(
-new{
-text = "Notes",
-url = "api/Notes/Index",
-iconCss = "fa-solid fa-folder-closed"
-}
-);
-menuItems.Add(
-new{
-text = "Mood Tracker",
-url = "api/MoodRating/Dashboard",
-iconCss = "fa-solid fa-folder-closed"
-}
-); *@
+@using Microsoft.AspNetCore.Identity
 
-}
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 <ejs-sidebar id="sidebar" width="250" enableDock dockSize="75px" target=".dock-target" enableGestures="false">
     <e-content-template>
         <div class="container">
             <i id="sidebar-toggler" class="bi bi-arrow-left-right"></i>
         </div>
         <div id="menu-container">
-            <ul class="nav flex-column" id="menu-list">
+            <ul class="nav flex-column justify-content-evenly" id="menu-list">
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house mx-2"></i>Home</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Index"><i class="bi bi-house mx-2"></i>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="JournalEntry" asp-action="Index"><i class="bi bi-book-half mx-2"></i>Journal</a>
+                    <a class="nav-link"  asp-controller="JournalEntry" asp-action="Index"><i class="bi bi-book-half mx-2"></i>Journal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Notes" asp-action="Index"> <i class="bi bi-stickies mx-2"></i>Notes</a>
+                    <a class="nav-link" asp-controller="Notes" asp-action="Index"><i class="bi bi-stickies mx-2"></i>Notes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="MoodRating" asp-action="Dashboard">Tracker</a>
+                    <a class="nav-link" asp-controller="MoodRating" asp-action="Dashboard"><i class="bi bi-graph-up mx-2"></i>Mood Insights</a>
                 </li>
+                @* <li>
+                Static Page <i class="fa-solid fa-hand-holding-hand"></i>
+                </li> *@
             </ul>
             </ul>
         </div>
 
         <div>
-            <partial name="_LoginPartial" />
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Account
+                        Settings</a>
+                </li>
+                <li class="nav-item">
+                    <form id="logout-btn" asp-area="Identity" asp-page="/Account/Logout"
+                        asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
+                        <button id="logout" type="submit" class="nav-link btn">Logout</button>
+                    </form>
+                </li>
+            </ul>
+            @* <partial name="_LoginPartial" /> *@
+
         </div>
     </e-content-template>
 </ejs-sidebar>

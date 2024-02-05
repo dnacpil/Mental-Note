@@ -1,6 +1,15 @@
 @model Notes;
 
 <section class="n-ced-section">
+    <div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Notes" asp-action="Index">Notes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add a note</li>
+            </ol>
+        </nav>
+    </div>
     <div class="n-forms">
         <form method="POST" asp-action="Create">
             <div asp-validation-summary="All"></div>

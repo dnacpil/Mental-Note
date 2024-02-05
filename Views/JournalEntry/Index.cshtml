@@ -14,7 +14,8 @@
             <div class="col-6 col-md-4">
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">
                     <i class="bi bi-sort-alpha-up mx-2"></i></a>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]"><i class="bi bi-sort-numeric-up"></i></a>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]"><i
+                        class="bi bi-sort-numeric-up"></i></a>
                 <a asp-controller="JournalEntry" asp-action="Create" class="btn jn-create-btn">
                     <i class="bi bi-journal-plus m-1"></i> Add a New Entry
                 </a>
@@ -23,6 +24,11 @@
     </section>
     <section id="je-i-table-section">
         <div class="container">
+            @if (TempData["empty"] != null)
+            {
+                <h2>@TempData["empty"]</h2>
+
+            }
             <table class="table table-striped table-borderless">
                 <thead>
                     <tr>
@@ -35,7 +41,7 @@
                         <th scope="col" id="je-th">Actions</th>
                     </tr>
                 <tbody class="table-group-divider justify-content-center~" id="je-tbody">
-                    @foreach (var obj in Model)
+                        @foreach (var obj in Model)
                         {
                         <tr>
                             <td>@obj.EntryDate</td>

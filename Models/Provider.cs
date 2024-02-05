@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace MentalNote.Models;
-public class Provider
+public class Provider : IdentityUser
 {
    [Key]
    public int ProviderID { get; set; }
