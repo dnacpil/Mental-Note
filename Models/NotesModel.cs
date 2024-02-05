@@ -15,4 +15,5 @@ public class Notes
    public string? Exercises { get; set; }
    public IdentityUser? Owner { get; set; }
    public string? OwnerId { get; set; }
+   public string? SharedWithEmail { get; set; }
 }

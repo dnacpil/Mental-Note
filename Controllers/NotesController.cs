@@ -4,6 +4,7 @@ using MentalNote.Data;
 using MentalNote.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace MentalNote.Controllers;
 
@@ -161,24 +162,24 @@ public class NotesController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult PostDelete(int? id)
-    {
-        var item = _db.Notes.Find(id);
-
-        if (item == null)
         {
-            return NotFound();
+            var item = _db.Notes.Find(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+            _db.Notes.Remove(item);
+            _db.SaveChangesAsync();
+            TempData["success"] = "Deleted";
+            return RedirectToAction(nameof(Index));
         }
-        _db.Notes.Remove(item);
-        _db.SaveChangesAsync();
-        TempData["success"] = "Deleted";
-        return RedirectToAction(nameof(Index));
-    }
 
 
     private bool NoteExists(int id)
-    {
-        return (_db.Notes?.Any(e => e.NoteID == id)).GetValueOrDefault();
-    }
+        {
+            return (_db.Notes?.Any(e => e.NoteID == id)).GetValueOrDefault();
+        }
 
     //To show the full content of the Notes and Exercises, allowing the user to read them
     [HttpGet]
@@ -191,7 +192,6 @@ public class NotesController : Controller
     }
 
     [HttpGet]
-    [Route("api/Notes/Content/{id}")]
     public async Task<IActionResult> Content(int? id)
     {
 
@@ -209,6 +209,29 @@ public class NotesController : Controller
 
         return View(notes);
 
+    }
+
+    [HttpGet]
+    public IActionResult ShareView()
+        {
+            return View();
+        }
+
+    [HttpPost]
+    public async Task<IActionResult> Share(string noteId, string recipientEmail)
+    {
+        var entry = await _db.Notes.FindAsync(noteId);
+
+        if (entry == null || entry.OwnerId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+        {
+            return NotFound();
+        }
+
+        entry.SharedWithEmail = recipientEmail;
+
+        await _db.SaveChangesAsync();
+
+        return RedirectToAction("Index");
     }
     /*[HttpGet]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

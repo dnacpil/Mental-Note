@@ -1,7 +1,7 @@
 @model Notes;
 <div class="notes-page">
     <section class="n-ced-section">
-        <form method="POST" asp-route-id="@Model.NoteID asp-action=" PostEdit" id="">
+        <form method="POST" asp-route-id=@Model.NoteID asp-action="PostEdit" id="">
             <input type="hidden" asp-for="NoteID" />
             <div asp-validation-summary="All"></div>
             <div class="text-justify">
