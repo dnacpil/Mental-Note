@@ -1,5 +1,13 @@
 @model Notes;
-<div class="notes-page">
+    <section class="d-inline-flex align-items-center n-ced-section breadcrumb-section">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Notes" asp-action="Index">Notes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit note</li>
+            </ol>
+        </nav>
+    </section>
     <section class="n-ced-section">
         <form method="POST" asp-route-id=@Model.NoteID asp-action="PostEdit" id="">
             <input type="hidden" asp-for="NoteID" />
@@ -15,13 +23,14 @@
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Note"  n-label>Notes</label>
-                    <input asp-for="Note" class="form-control n-input" placeholder="Edit content" style="min-height: 150px;" />
+                    <label asp-for="Note" n-label>Notes</label>
+                    <input asp-for="Note" class="form-control n-input" placeholder="Edit content"
+                        style="min-height: 150px;" />
                 </div>
             </div>
             <div class="row justify-content-start my-3">
                 <div class="col-lg-6">
-                    <label asp-for="Exercises"  n-label>Edit Exercises</label>
+                    <label asp-for="Exercises" n-label>Edit Exercises</label>
                     <input asp-for="Exercises" class="form-control n-input" placeholder="Edit exercises"
                         style="min-height: 150px;" />
 
@@ -32,12 +41,10 @@
                     <button type="submit" class="btn n-form-btn">Update</button>
                 </div>
                 <div class="col-6 col-md-3">
-                    <a asp-controller="JournalEntry" asp-action="Index"
-                        class="btn form-control">
+                    <a asp-controller="JournalEntry" asp-action="Index" class="btn form-control">
                         Back to main
                     </a>
                 </div>
             </div>
         </form>
     </section>
-</div>

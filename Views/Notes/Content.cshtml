@@ -2,14 +2,15 @@
 @{
     ViewData["Title"] = "Notes";
 }
-<section>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-            <li class="breadcrumb-item"><a asp-controller="Notes" asp-action="Index">Notes List</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Note</li>
-        </ol>
-    </nav>
+<section class="d-inline-flex align-items-center notes-page breadcrumb-section">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Notes" asp-action="Index">Notes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Note</li>
+            </ol>
+        </nav>
+    </section>
 </section>
 <section class="n-content-section px-2 py-2">
     <div class="row">

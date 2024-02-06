@@ -1,9 +1,17 @@
 @model JournalEntry;
 <div class="je-ced-views p-2">
-    <section class="d-inline-flex align-items-center">
-        <div class="je-ed-title ms-3">
-            <h2>EDIT JOURNAL ENTRY</h1>
-        </div>
+    <section class="d-inline-flex align-items-center w-100">
+            <h2 class="je-ed-title ms-3">EDIT JOURNAL ENTRY</h1>
+    </section>
+    <section class="d-inline-flex align-items-center breadcrumb-section je-ced-views">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="breadcrumb-item"><a asp-controller="Journalentry" asp-action="Index">Journal Entries</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            </ol>
+        </nav>
     </section>
     <section class="je-ced-section">
         <div class="je-forms">
@@ -22,12 +30,7 @@
                 </div>
                 <div class="row align-items-center">
                     <div class="text-center my-3">
-                        <button type="submit" class="btn form-control" id="">Update</button>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <a asp-controller="JournalEntry" asp-action="Index" class="btn form-control">
-                            Back to main
-                        </a>
+                        <button type="submit" class="btn form-control jn-btn">Update</button>
                     </div>
                 </div>
             </form>

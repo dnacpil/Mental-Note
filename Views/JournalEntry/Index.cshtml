@@ -9,17 +9,10 @@
         </div>
     </section>
     <section id="je-btn-section">
-        <div class="row">
-            <div class="col-12 col-md-8"></div>
-            <div class="col-6 col-md-4">
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">
-                    <i class="bi bi-sort-alpha-up mx-2"></i></a>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]"><i
-                        class="bi bi-sort-numeric-up"></i></a>
-                <a asp-controller="JournalEntry" asp-action="Create" class="btn jn-create-btn">
-                    <i class="bi bi-journal-plus m-1"></i> Add a New Entry
-                </a>
-            </div>
+        <div class="row justify-content-end">
+            <a asp-controller="JournalEntry" asp-action="Create" class="btn me-2 je-btn">
+                <i class="bi bi-journal-plus m-1"></i> Add a New Entry
+            </a>
         </div>
     </section>
     <section id="je-i-table-section">
@@ -27,22 +20,30 @@
             <table class="table table-striped table-borderless">
                 <thead>
                     <tr>
-                        <th scope="col" id="je-th">
+                        <th scope="col" id="je-th"><a asp-action="Index"
+                                asp-route-sortOrder="@ViewData["DateSortParm"]"><i
+                                    class="bi bi-sort-numeric-up"></i></a>
                             Date
                         </th>
                         <th scope="col" id="je-th">
                             Title
+                            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">
+                                <i class="bi bi-sort-alpha-up mx-2"></i></a>
                         </th>
                         <th scope="col" id="je-th">Actions</th>
                     </tr>
                 <tbody class="table-group-divider justify-content-center~" id="je-tbody">
+
                     @if (TempData["empty"] != null)
                         {
-                            <h2>@TempData["empty"]</h2>
-
+                        <div class="text-center empty-message-container">
+                            <h3>@TempData["empty"]</h3>
+                        </div>
                         }
-                    @foreach (var obj in Model)
-                    {
+
+
+                        @foreach (var obj in Model)
+                        {
                         <tr>
                             <td>@obj.EntryDate</td>
                                 @**@
@@ -56,7 +57,7 @@
                                         class="bi bi-trash3"></i></a>
                             </td>
                         </tr>
-                    }
+                        }
                 </tbody>
             </table>
         </div>

@@ -1,12 +1,12 @@
 @model JournalEntry;
-<section class="breadcrumb-section">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li class="breadcrumb-item"><a asp-controller="Journalentry" asp-action="Index">Journal Entries</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Write</li>
-            </ol>
-        </nav>
+<section class="d-inline-flex align-items-center breadcrumb-section je-ced-views">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Journalentry" asp-action="Index">Journal Entries</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Write</li>
+        </ol>
+    </nav>
 </section>
 <section class="je-ced-section">
     @* <div class="je-ced-views p-2"> *@
@@ -23,8 +23,10 @@
                 <input asp-for="JournalContent" class="form-control py-1" id="je-input"
                     placeholder="Write about your thoughts, feelings, ideas..." style="min-height: 300px;" />
             </div>
-            <div class="row">
-                <button type="submit" class="btn form-control" id="je-create-btn">Add</button>
+            <div class="row align-items-center">
+                <div class="text-center my-3">
+                    <button type="submit" class="btn form-control jn-btn">Add</button>
+                </div>
             </div>
         </form>
     </div>

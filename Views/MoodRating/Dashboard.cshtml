@@ -1,12 +1,13 @@
-<div id="dashboard-page">
-    <section>
+<div class="p-3 mood-page">
+    <section id="dashboard-info">
         <h1></h1>
         <p></p>
     </section>
-    <section class="mr-section mb-3">
+    <section class="mb-3">
         <div class="row">
             <div class="col-lg-5">
-                <ejs-accumulationchart id="doughnut" title="Mood differences in the past 30 days">
+                <div id="doughnut-chart-container">
+                    <ejs-accumulationchart id="doughnut" title="Mood differences in the past 30 days">
                     <e-accumulationchart-legendsettings visible=true></e-accumulationchart-legendsettings>
                     <e-accumulation-series-collection>
                         <e-accumulation-series dataSource="ViewBag.doughnutDataSource" xName="MoodCategory"
@@ -20,18 +21,18 @@
                     </e-accumulationchart-legendsettings>
                     <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
                 </ejs-accumulationchart>
+                </div>
             </div>
             <div class="col-lg-2">
-
             </div>
             <div class="col-lg-5">
-
             </div>
         </div>
     </section>
-    <section class="mr-section my-2">
-        <div class="row">
-            <ejs-chart id="graph" title="Mood ratings in the last 30 days." width="90%">
+    <section class="my-2">
+        <div class="row px-3">
+            <div id="line-chart-container">
+                <ejs-chart id="graph" title="Mood ratings in the last 30 days." width="80%">
                 <e-chart-primaryxaxis valueType="Category">
                 </e-chart-primaryxaxis>
                 <e-series-collection>
@@ -42,6 +43,7 @@
                     </e-series>
                 </e-series-collection>
             </ejs-chart>
+            </div>
         </div>
     </section>
 </div>

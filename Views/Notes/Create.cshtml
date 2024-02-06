@@ -1,5 +1,5 @@
 @model Notes;
-<section>
+<section class="d-inline-flex align-items-center n-ced-section breadcrumb-section">
     <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
@@ -26,8 +26,10 @@
                 <input type="text" asp-for="Exercises" class="form-control py-1 n-input" placeholder=""
                     style="min-height: 150px;" />
             </div>
-            <div class="row">
-                <button type="submit" class="btn n-form-btn">Add</button>
+            <div class="row align-items-center">
+                <div class="text-center my-3">
+                <button type="submit" class="btn jn-btn">Add</button>
+            </div>
             </div>
         </form>
     </div>

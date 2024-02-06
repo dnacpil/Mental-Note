@@ -10,20 +10,20 @@
         </div>
     </section>
     <section id="n-btn-section">
-        <div class="row">
-            <div class="col-12 col-md-8"></div>
-            <div class="col-6 col-md-4">
-                <a asp-controller="Notes" asp-action="Create" class="btn jn-create-btn">
-                    <i class="bi bi-plus-circle me-2"></i>Create a new note
-                </a>
-            </div>
+        <div class="row justify-content-end">
+            <a asp-controller="Notes" asp-action="Create" class="btn me-2 jn-btn">
+                <i class="bi bi-plus-circle me-2"></i>Create a new note
+            </a>
         </div>
     </section>
+    <hr/>
     <section id="n-i-cards">
         <div class="row">
             @if (TempData["empty"] != null)
             {
-                <h2>@TempData["empty"]</h2>
+                <div class="text-center empty-message-container">
+                    <h3>@TempData["empty"]</h3>
+                </div>
             }
             @foreach (var obj in Model)
             {
