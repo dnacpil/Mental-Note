@@ -1,7 +1,37 @@
 <div id="dashboard-page">
-    <section class="mr-section">
+    <section>
+        <h1></h1>
+        <p></p>
+    </section>
+    <section class="mr-section mb-3">
         <div class="row">
-            <ejs-chart id="graph" title="Mood Graph" width="90%">
+            <div class="col-lg-5">
+                <ejs-accumulationchart id="doughnut" title="Mood differences in the past 30 days">
+                    <e-accumulationchart-legendsettings visible=true></e-accumulationchart-legendsettings>
+                    <e-accumulation-series-collection>
+                        <e-accumulation-series dataSource="ViewBag.doughnutDataSource" xName="MoodCategory"
+                            yName="Percentage" innerRadius="40%" palettes=@(new string[]{"#1a6aff","#7e60df"})>
+                            <e-accumulationseries-datalabel name="formattedAmount"
+                                visible></e-accumulationseries-datalabel>
+                        </e-accumulation-series>
+                    </e-accumulation-series-collection>
+                    <e-accumulationchart-legendsettings position="Top" toggleVisibility="false">
+                        <e-legendsettings-textstyle size="1rem"></e-legendsettings-textstyle>
+                    </e-accumulationchart-legendsettings>
+                    <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+                </ejs-accumulationchart>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
+            <div class="col-lg-5">
+
+            </div>
+        </div>
+    </section>
+    <section class="mr-section my-2">
+        <div class="row">
+            <ejs-chart id="graph" title="Mood ratings in the last 30 days." width="90%">
                 <e-chart-primaryxaxis valueType="Category">
                 </e-chart-primaryxaxis>
                 <e-series-collection>
@@ -12,27 +42,6 @@
                     </e-series>
                 </e-series-collection>
             </ejs-chart>
-        </div>
-    </section>
-    <section class="mr-section">
-        <div class="row">
-            <div class="col-lg-6">
-                <ejs-accumulationchart id="doughnut" title="Low and High">
-                    <e-accumulationchart-legendsettings visible=true></e-accumulationchart-legendsettings>
-                    <e-accumulation-series-collection>
-                        <e-accumulation-series dataSource="ViewBag.doughnutDataSource" xName="MoodCategory"
-                            yName="Percentage" innerRadius="40%" palettes="[]">
-                            <e-accumulationseries-datalabel name="formattedAmount"
-                                visible></e-accumulationseries-datalabel>
-                        </e-accumulation-series>
-                    </e-accumulation-series-collection>
-                    <e-accumulationchart-legendsettings position="Top" toggleVisibility="false">
-                        <e-legendsettings-textstyle color="" size="1rem"></e-legendsettings-textstyle>
-                    </e-accumulationchart-legendsettings>
-                    <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
-                </ejs-accumulationchart>
-            </div>
-
         </div>
     </section>
 </div>

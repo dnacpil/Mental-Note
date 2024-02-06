@@ -1,7 +1,5 @@
 @model JournalEntry;
-
-<section class="je-ced-section">
-    <div>
+<section class="breadcrumb-section">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
@@ -9,7 +7,8 @@
                 <li class="breadcrumb-item active" aria-current="page">Write</li>
             </ol>
         </nav>
-    </div>
+</section>
+<section class="je-ced-section">
     @* <div class="je-ced-views p-2"> *@
     <div class="je-forms">
         <form method="POST" asp-action="Create">

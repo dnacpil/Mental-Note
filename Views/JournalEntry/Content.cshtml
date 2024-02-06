@@ -2,16 +2,16 @@
 @{
     ViewData["Title"] = "Notes";
 }
-<section class="je-ced-section">
-    <div class="row mx-2 my-2">
-        <nav aria-label="breadcrumb">
+<section class="breadcrumb-section">
+    <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
                 <li class="breadcrumb-item"><a asp-controller="Journalentry" asp-action="Index">Journal Entries</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Content</li>
             </ol>
         </nav>
-    </div>
+</section>
+<section class="je-ced-section">
     <div class="row mx-2 my-2">
         <p>@Model.Title</p>
     </div>
