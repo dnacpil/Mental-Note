@@ -441,19 +441,32 @@ a:active {
 }
 
 /*Login and Registration Page*/
-#login-container {
-  width: 80%;
-  margin: auto;
-  position: relative;
-  top: 90px;
-  padding: 1%;
-}
-
-.validation-summary-errors {
+.lr-views{
+  min-height: 500px;
+  padding: 5%;
+ }
+ .lr-forms-container{
+  padding: 3%;
+  border: 1px solid #bb90db;
+  border-radius: 5%;
+ }
+ .lr-input{
+  width: 100%;
+  height: 50px;
+  border: 1px solid #bb90db;
+ }
+ .lr-btn{
+  width: 100%;
+  height: 50px;
+  border: 1px solid #bb90db;
+  background-color: #f6f6f6;
+ }
+ /*Validation Errors*/
+ .validation-summary-errors {
   font-size: 12px;
   font-weight: 100;
   color: red;
-}
+ } 
 
 @media (min-width: 768px) {
   html {
