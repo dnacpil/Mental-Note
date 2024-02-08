@@ -7,7 +7,7 @@ h2 {
   font-size: 50px;
   font-weight: 300;
 }
-h3{
+h3 {
   font-size: 40px;
   font-weight: 300;
 }
@@ -79,7 +79,8 @@ a:active {
   transform: translateX(0%);
 }
 
-.list-group-item, .list-group-item-action {
+.list-group-item,
+.list-group-item-action {
   font-family: "Lato", sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -95,11 +96,11 @@ a:active {
   font-weight: 300;
   text-align: justify;
 }
-.nav-link:hover{
+.nav-link:hover {
   color: #7e60df;
 }
 
-#logout{
+#logout {
   color: #000000;
 }
 
@@ -243,7 +244,7 @@ a:active {
 }
 
 /*Breadcrumb*/
-.breadcrumb-section{
+.breadcrumb-section {
   height: 125px;
   width: 100%;
   padding: 2%;
@@ -252,10 +253,10 @@ a:active {
 .breadcrumb-item {
   font-size: 18px;
   font-weight: 300;
-  color: #ffffff
+  color: #ffffff;
 }
 /*Empty Data Message*/
-.empty-message-container{
+.empty-message-container {
   padding: 2%;
   border: 1px solid #ffffff;
   border-radius: 10px;
@@ -419,7 +420,7 @@ a:active {
   width: 100%;
   padding: 2%;
 }
-#rating-input{
+#rating-input {
   width: 200px;
 }
 #md-i-2nd-section {
@@ -432,43 +433,64 @@ a:active {
   width: 100%;
   padding: 2%;
 }
-#dashboard-info{
+#dashboard-info {
   min-height: 150px;
   padding: 1%;
 }
 
-#doughnut-chart-container, #line-chart-container {
+#doughnut-chart-container,
+#line-chart-container {
   background-color: #f6f6f6;
   border-radius: 20px;
 }
 
 /*Login and Registration Page*/
-.lr-views{
+.lr-views {
   min-height: 500px;
   padding: 5%;
- }
- .lr-forms-container{
+}
+.lr-forms-container {
   padding: 3%;
   border: 1px solid #bb90db;
   border-radius: 5%;
- }
- .lr-input{
+}
+.lr-input {
   width: 100%;
   height: 50px;
   border: 1px solid #bb90db;
- }
- .lr-btn{
+}
+.lr-btn {
   width: 100%;
   height: 50px;
   border: 1px solid #bb90db;
   background-color: #f6f6f6;
- }
- /*Validation Errors*/
- .validation-summary-errors {
+}
+
+/*Account Pages*/
+#identity-layout {
+  min-height: 600px;
+  padding: 2%;
+}
+
+.account-settings-btn{
+  width: 100%;
+  height: 50px;
+  border: 1px solid #7e60df;
+  background-color: #7e60df;
+  color: #ffffff;
+}
+#as-delete{
+  width: 100%;
+  color: red;
+}
+
+
+/*Validation Errors*/
+.validation-summary-errors {
   font-size: 12px;
   font-weight: 100;
   color: red;
- } 
+}
 
 @media (min-width: 768px) {
   html {
