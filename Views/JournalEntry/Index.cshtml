@@ -32,15 +32,8 @@
                         </th>
                         <th scope="col" id="je-th">Actions</th>
                     </tr>
+                </thead>
                 <tbody class="table-group-divider justify-content-center~" id="je-tbody">
-
-                    @if (TempData["empty"] != null)
-                        {
-                        <div class="text-center empty-message-container">
-                            <h3>@TempData["empty"]</h3>
-                        </div>
-                        }
-
 
                         @foreach (var obj in Model)
                         {
@@ -60,6 +53,12 @@
                         }
                 </tbody>
             </table>
+            @if (TempData["empty"] != null)
+                        {
+                        <div class="text-center empty-message-container">
+                            <h3>@TempData["empty"]</h3>
+                        </div>
+                        }
         </div>
     </section>
 </div>

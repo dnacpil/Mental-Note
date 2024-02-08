@@ -1,31 +1,33 @@
 <div class="p-3 mood-page">
     <section id="dashboard-info">
-        <h1></h1>
-        <p></p>
+        <h2>Mood Tracking Dashboard</h2>
+        <p class="mt-3">Not everyone likes numbers, but this data is here to hopefully help you reflect on your mental health journey
+            and make informed decisions for your well-being.</p>
     </section>
     <section class="mb-3">
         <div class="row">
             <div class="col-lg-5">
                 <div id="doughnut-chart-container">
                     <ejs-accumulationchart id="doughnut" title="Mood differences in the past 30 days">
-                    <e-accumulationchart-legendsettings visible=true></e-accumulationchart-legendsettings>
-                    <e-accumulation-series-collection>
-                        <e-accumulation-series dataSource="ViewBag.doughnutDataSource" xName="MoodCategory"
-                            yName="Percentage" innerRadius="40%" palettes=@(new string[]{"#1a6aff","#7e60df"})>
-                            <e-accumulationseries-datalabel name="formattedAmount"
-                                visible></e-accumulationseries-datalabel>
-                        </e-accumulation-series>
-                    </e-accumulation-series-collection>
-                    <e-accumulationchart-legendsettings position="Top" toggleVisibility="false">
-                        <e-legendsettings-textstyle size="1rem"></e-legendsettings-textstyle>
-                    </e-accumulationchart-legendsettings>
-                    <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
-                </ejs-accumulationchart>
+                        <e-accumulationchart-legendsettings visible=true></e-accumulationchart-legendsettings>
+                        <e-accumulation-series-collection>
+                            <e-accumulation-series dataSource="ViewBag.doughnutDataSource" xName="MoodCategory"
+                                yName="Percentage" innerRadius="40%" palettes=@(new string[]{"#1a6aff","#7e60df"})>
+                                <e-accumulationseries-datalabel name="formattedAmount"
+                                    visible></e-accumulationseries-datalabel>
+                            </e-accumulation-series>
+                        </e-accumulation-series-collection>
+                        <e-accumulationchart-legendsettings position="Top" toggleVisibility="false">
+                            <e-legendsettings-textstyle size="1rem"></e-legendsettings-textstyle>
+                        </e-accumulationchart-legendsettings>
+                        <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
+                    </ejs-accumulationchart>
                 </div>
             </div>
-            <div class="col-lg-2">
-            </div>
-            <div class="col-lg-5">
+            <div class="col-lg-7">
+                <p>Gain insights into your emotional well-being over the past 30 days. Monitor your mood trends with the
+                    line chart, depicting daily mood ratings, and visualize the distribution of low and high moods with
+                    the pie chart.</p>
             </div>
         </div>
     </section>
@@ -33,16 +35,16 @@
         <div class="row px-3">
             <div id="line-chart-container">
                 <ejs-chart id="graph" title="Mood ratings in the last 30 days." width="80%">
-                <e-chart-primaryxaxis valueType="Category">
-                </e-chart-primaryxaxis>
-                <e-series-collection>
-                    <e-series dataSource="ViewBag.dataSource" xName="Date" yName="MoodRating" type="Line">
-                        <e-series-marker visible=true>
-                            <e-series-datalabel visible=true></e-series-datalabel>
-                        </e-series-marker>
-                    </e-series>
-                </e-series-collection>
-            </ejs-chart>
+                    <e-chart-primaryxaxis valueType="Category">
+                    </e-chart-primaryxaxis>
+                    <e-series-collection>
+                        <e-series dataSource="ViewBag.dataSource" xName="Date" yName="MoodRating" type="Line">
+                            <e-series-marker visible=true>
+                                <e-series-datalabel visible=true></e-series-datalabel>
+                            </e-series-marker>
+                        </e-series>
+                    </e-series-collection>
+                </ejs-chart>
             </div>
         </div>
     </section>

@@ -162,24 +162,24 @@ public class NotesController : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult PostDelete(int? id)
-        {
-            var item = _db.Notes.Find(id);
+    {
+        var item = _db.Notes.Find(id);
 
-            if (item == null)
-            {
-                return NotFound();
-            }
-            _db.Notes.Remove(item);
-            _db.SaveChangesAsync();
-            TempData["success"] = "Deleted";
-            return RedirectToAction(nameof(Index));
+        if (item == null)
+        {
+            return NotFound();
         }
+        _db.Notes.Remove(item);
+        _db.SaveChangesAsync();
+        TempData["success"] = "Deleted";
+        return RedirectToAction(nameof(Index));
+    }
 
 
     private bool NoteExists(int id)
-        {
-            return (_db.Notes?.Any(e => e.NoteID == id)).GetValueOrDefault();
-        }
+    {
+        return (_db.Notes?.Any(e => e.NoteID == id)).GetValueOrDefault();
+    }
 
     //To show the full content of the Notes and Exercises, allowing the user to read them
     [HttpGet]
@@ -212,26 +212,26 @@ public class NotesController : Controller
     }
 
     [HttpGet]
-    public IActionResult ShareView()
-        {
-            return View();
-        }
-
-    [HttpPost]
-    public async Task<IActionResult> Share(string noteId, string recipientEmail)
+    public IActionResult Share()
     {
-        var entry = await _db.Notes.FindAsync(noteId);
+        return View();
+    }
+
+    public async Task<IActionResult> SharePost([Bind("NoteID, RecipientEmail")] Notes item)
+    {
+
+        var entry = await _db.Notes.FindAsync(item.NoteID);
 
         if (entry == null || entry.OwnerId != User.FindFirstValue(ClaimTypes.NameIdentifier))
         {
             return NotFound();
         }
 
-        entry.SharedWithEmail = recipientEmail;
+        entry.RecipientEmail = item.RecipientEmail;
 
         await _db.SaveChangesAsync();
 
-        return RedirectToAction("Index");
+        return RedirectToAction(nameof(Content)); 
     }
     /*[HttpGet]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

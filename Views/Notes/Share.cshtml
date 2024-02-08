@@ -1,6 +1,7 @@
 @model Notes;
-<form method="POST" asp-action="Share" asp-route-id="@Model.NoteID">
-    <label asp-for="SharedWithEmail">Recipient Email</label>
-    <input asp-for="SharedWithEmail" type="email" />
+
+<form method="POST" asp-action="SharePost">
+    <label asp-for="RecipientEmail">Recipient Email</label>
+    <input asp-for="RecipientEmail" type="email" />
     <button type="submit">Share via Email</button>
 </form>

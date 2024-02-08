@@ -433,8 +433,10 @@ a:active {
   padding: 2%;
 }
 #dashboard-info{
-  height: 150px;
+  min-height: 150px;
+  padding: 1%;
 }
+
 #doughnut-chart-container, #line-chart-container {
   background-color: #f6f6f6;
   border-radius: 20px;
