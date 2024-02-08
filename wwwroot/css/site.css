@@ -2,6 +2,7 @@
 
 h1 {
   font-size: 72px;
+  font-weight: 300;
 }
 h2 {
   font-size: 50px;
@@ -412,7 +413,6 @@ a:active {
       100%,
       rgba(255, 255, 255, 0) 100%
     );
-  --bg-overlay-color: transparent;
   font-size: 20px;
 }
 #md-i-first-section {
@@ -444,6 +444,64 @@ a:active {
   border-radius: 20px;
 }
 
+/*More Resources Page*/
+#resources-page{
+  min-height: 500px;
+  width: 100%;
+  padding: 2%;
+  background-image: radial-gradient(
+    circle at 82.56998697916667% 11.536458333333334%,
+    #95b9ff 0%,
+    16.625%,
+    rgba(149, 185, 255, 0) 35%
+  ),
+  radial-gradient(
+    circle at 82.17447916666667% 74.189453125%,
+    #ffbfa1 0%,
+    30.875%,
+    rgba(255, 191, 161, 0) 65%
+  ),
+  radial-gradient(
+    circle at 52.86132812499999% 25.478515624999996%,
+    #f6e6ff 0%,
+    41.1%,
+    rgba(246, 230, 255, 0) 60%
+  ),
+  radial-gradient(
+    circle at 38.623046875% 66.943359375%,
+    #7e60df 0%,
+    25.5%,
+    rgba(126, 96, 223, 0) 50%
+  ),
+  radial-gradient(
+    circle at 14.4189453125% 33.421223958333336%,
+    #d2e4c7 0%,
+    34.25%,
+    rgba(210, 228, 199, 0) 50%
+  ),
+  radial-gradient(
+    circle at 48.9013671875% 49.521484375%,
+    #ffffff 0%,
+    100%,
+    rgba(255, 255, 255, 0) 100%
+  );
+font-size: 20px;
+}
+
+#pieta-card{
+  border: 1px solid #ff7421;
+}
+#pieta-card .card-link,
+#pieta-card .card-title{
+  color: #6200c0;
+}
+#pieta-card a{
+  color: #ff7421;
+}
+#jigsaw-card .card-title,
+#jigsaw-card .card-link{
+  color: #005868;
+}
 /*Login and Registration Page*/
 .lr-views {
   min-height: 500px;
@@ -491,6 +549,14 @@ a:active {
   font-weight: 100;
   color: red;
 }
+.fade-in-text {
+  animation: fadeIn 5s;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 @media (min-width: 768px) {
   html {
