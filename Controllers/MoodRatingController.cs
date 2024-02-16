@@ -39,6 +39,12 @@ public class MoodRatingController : Controller
         return View();
     }
 
+
+    public IActionResult List()
+    {
+        return View();
+    }
+
     //To add a rating
     [HttpGet]
     public IActionResult Create()
@@ -47,7 +53,7 @@ public class MoodRatingController : Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult<IEnumerable<MoodRating>>> Create([Bind("MoodRatingID, RatingDate, Emoji, Rating, MoodNote, OwnerId")] MoodRating moodRating)
+    public async Task<ActionResult<IEnumerable<MoodRating>>> Create([Bind("MoodRatingID, gDate, Rating, MoodNote, OwnerId")] MoodRating moodRating)
     {
         if (ModelState.IsValid)
         {

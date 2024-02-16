@@ -139,6 +139,7 @@ a:active {
       100%,
       rgba(255, 255, 255, 0) 100%
     );
+
 }
 #h-second-section {
   width: 100%;
@@ -175,7 +176,9 @@ a:active {
     );
   text-align: center;
 }
-
+.mr-link{
+  color: #ffffff;
+}
 /* Journal Entry Views */
 #je-i-first-section {
   min-height: 125px;
@@ -421,7 +424,10 @@ a:active {
   padding: 2%;
 }
 #rating-input {
-  width: 200px;
+  width: 100%;
+}
+#rating-input li{
+  font-size: 0px;
 }
 #md-i-2nd-section {
   height: 300px;

@@ -4,7 +4,6 @@ using MentalNote.Data;
 using MentalNote.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
 
 namespace MentalNote.Controllers;
 
@@ -211,7 +210,7 @@ public class NotesController : Controller
 
     }
 
-    [HttpGet]
+   /*  [HttpGet]
     public IActionResult Share()
     {
         return View();
@@ -232,7 +231,7 @@ public class NotesController : Controller
         await _db.SaveChangesAsync();
 
         return RedirectToAction(nameof(Content)); 
-    }
+    } */
     /*[HttpGet]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
      public IActionResult Error()

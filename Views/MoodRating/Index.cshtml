@@ -1,8 +1,3 @@
-@using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-
 @model MoodRating
 
 <div class="mood-page">
@@ -11,23 +6,41 @@
             <p>On a scale of 1 to 10, with 1 being not great and 10 being fantastic, rate your mood:</p>
         </div>
         <div class="row align-items-center" id="md-i-row2">
-            <form method="POST" asp-action="Create">
-                <div asp-validation-summary="All"></div>
-                <div class="row align-items-center">
-                    <input asp-for="Rating" class="form-control" id="rating-input"/>
-                </div>
-                <div class="row">
-                    <button type="submit" class="btn">Add</button>
-                </div>
-            </form>
+            <div class="col-4"></div>
+            <div class="col-4 px-3">
+                <form method="POST" asp-action="Create">
+                    <div asp-validation-summary="All"></div>
+                    <div class="row align-items-center">
+                        <input asp-for="Rating" class="form-control" id="rating-input" />
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4"></div>
         </div>
     </section>
     <section id="md-i-2nd-section">
         <div class="row text-center">
             <p>Select words that resonate with your current emotions</p>
         </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 px-3">
+                <form method="POST" asp-action="Create">
+                    <div asp-validation-summary="All"></div>
+                    <div class="row align-items-center">
+                        <input asp-for="MoodNote" class="form-control" id="rating-input" />
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-        @* Add selection tags here*@
+        <div class="col-4"></div>
     </section>
 
     <section id="md-i-3rd-section">
@@ -38,10 +51,11 @@
             <p>Feel the need to express more? Turn your emotions into words. Start journaling now and embrace the
                 therapeutic power of self-reflection.</p>
         </div>
-        <div class="row text-center font-weight-light">
+        <div class="row text-center font-weight-light mr-link">
             <a asp-controller="JournalEntry" asp-action="Create">
                 Let's check in with ourselves
-                <i class="bi bi-chevron-double-right"></i>
-            </a></div>
+                <i class="bi bi-chevron-double-right mr-link"></i>
+            </a>
+        </div>
     </section>
-</div>
+</div> 

@@ -1,22 +1,42 @@
 @model IEnumerable<Notes>
-    
+
 @{
     ViewData["Title"] = "Notes";
 }
-
-<div>
-    @foreach (var obj in Model)
-        {
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
-                    <div class="card">
+<div class="notes-page">
+    <section class="d-inline-flex align-items-center" id="n-i-first-section">
+        <div class="ms-3">
+            <h1 class="fw-light">NOTES</h1>
+        </div>
+    </section>
+    <section id="n-btn-section">
+        <div class="row justify-content-end">
+            <a asp-controller="Notes" asp-action="Create" class="btn me-2 jn-btn">
+                <i class="bi bi-plus-circle me-2"></i>Create a new note
+            </a>
+        </div>
+    </section>
+    <hr/>
+    <section id="n-i-cards">
+        <div class="row">
+            @if (TempData["empty"] != null)
+            {
+                <div class="text-center empty-message-container">
+                    <h3>@TempData["empty"]</h3>
+                </div>
+            }
+            @foreach (var obj in Model)
+            {
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card bg-transparent border-light mb-3 ">
                         <div class="card-body">
-                            <h5>@obj.Title</h5>
-                            <p>@obj.NoteDate</p>
-                            <a class="btn btn-primary" asp-action="Content" asp-route-id="@obj.NoteID">Read</a>
+                            <h5 class="card-title">@obj.Title</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@obj.NoteDate</h6>
+                            <a class="card-link" asp-action="Content" asp-route-id="@obj.NoteID">Read</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+    </section>
 </div>
