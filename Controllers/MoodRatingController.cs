@@ -53,7 +53,7 @@ public class MoodRatingController : Controller
     }
 
     [HttpPost]
-    public async Task<ActionResult<IEnumerable<MoodRating>>> Create([Bind("MoodRatingID, gDate, Rating, MoodNote, OwnerId")] MoodRating moodRating)
+    public async Task<ActionResult<IEnumerable<MoodRating>>> Create([Bind("MoodRatingID, Date, Rating, MoodNote, OwnerId")] MoodRating moodRating)
     {
         if (ModelState.IsValid)
         {
@@ -84,7 +84,7 @@ public class MoodRatingController : Controller
 
         var daysLowMood = MoodHistory.Count(mood => mood.Rating <= 5);
 
-        if (daysLowMood >= 30)
+        if (daysLowMood >= 1)
         {
             TempData["message"] = "It might be time to get some help again.";
         }
