@@ -3,15 +3,34 @@ using MentalNote.Data;
 using Microsoft.AspNetCore.Identity;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration
+
+if(builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<MentalNoteDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("MentalNoteDBConnection")));
+    builder.Services.AddDistributedMemoryCache();
+}
+else
+{
+    builder.Services.AddDbContext<MentalNoteDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
+    builder.Services.AddStackExchangeRedisCache(options =>
+    {
+    options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+    options.InstanceName = "SampleInstance";
+    });
+}
+
+/* var connectionString = builder.Configuration
     .GetConnectionString("MentalNoteDBConnection") ??
     throw new InvalidOperationException("Connection string 'MentalNoteDBConnection' not found.");
 builder.Services.AddDbContext<MentalNoteDbContext>(options =>
     options.UseSqlite(connectionString));
-    builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MentalNoteDbContext>();
+    builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MentalNoteDbContext>(); */
 
 builder.Services.AddRazorPages();
 
