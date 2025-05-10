@@ -2,16 +2,14 @@ using Microsoft.EntityFrameworkCore;
 using MentalNote.Data;
 using Microsoft.AspNetCore.Identity;
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-if(builder.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<MentalNoteDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("MentalNoteDBConnection")));
+        options.UseSqlite(builder.Configuration.GetConnectionString("MentalNoteDBConnection")));
     builder.Services.AddDistributedMemoryCache();
 }
 else
@@ -20,22 +18,20 @@ else
         options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
     builder.Services.AddStackExchangeRedisCache(options =>
     {
-    options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
-    options.InstanceName = "SampleInstance";
+        options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+        options.InstanceName = "SampleInstance";
     });
 }
 
-/* var connectionString = builder.Configuration
-    .GetConnectionString("MentalNoteDBConnection") ??
-    throw new InvalidOperationException("Connection string 'MentalNoteDBConnection' not found.");
-builder.Services.AddDbContext<MentalNoteDbContext>(options =>
-    options.UseSqlite(connectionString));
-    builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<MentalNoteDbContext>(); */
+// Register Identity
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+    options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<MentalNoteDbContext>();
 
 builder.Services.AddRazorPages();
 
-//Syncfusion license registration
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt8QHJqUU1hXk5Hd0BLVGpAblJ3T2ZQdVt5ZDU7a15RRnVeQF9kSH1Wf0ZkWXtZcw==;Mgo+DSMBPh8sVXJ3S0R+WFpFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF5iS3xUd0ZmUHxZcHJXTw==;Mgo+DSMBMAY9C3t2VlhiQlVPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSHxRcURgXHZdd3RSTmY=");
+// Syncfusion license registration
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("...");
 
 var app = builder.Build();
 
@@ -64,4 +60,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
 app.Run();
